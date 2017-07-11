@@ -1,0 +1,300 @@
+html,body{
+	height:100%;
+	height:100%;
+}
+form{
+	width:100%;
+	height:100%;
+}
+.bookMap{
+	height:100%;
+	width:100%;
+	padding:0.94%;
+	display: flex;
+	justify-content: space-between;
+	background: url('../images/bookMap_bg.png') no-repeat;
+	background-size: 100% 100%;
+}
+.bookMap .bookMap-left{
+	width:19.75%;
+	height:100%;
+	background: rgba(0,0,0,0.2);
+	border-radius: 10px;
+}
+.bookMap .bookMap-left .book-pic{
+	width:53.76%;
+	height:24.9%;
+	background-color: #fff;
+	margin: 0 auto;
+	margin-top:20%;
+}
+.bookMap .bookMap-left .book-pic .sync-bookpic{
+	width:82.5%;
+	height:100%;
+	margin: 0 auto;
+}
+.bookMap .bookMap-left .book-pic .sync-bookpic img{
+	height:100%;
+	width:100%;
+}
+.bookMap .bookMap-left .book-baseMsg{
+	width:100%;
+	height:11%;
+	margin-top:9.31%;
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+.bookMap .bookMap-left .book-baseMsg .bookName{
+	width:100%;
+	height:auto;
+	font-size:1.4rem;
+	font-weight: 500;
+	line-height: 1.8rem;
+	color: #fff;
+}
+.bookMap .bookMap-left .book-baseMsg .book-isbn{
+	font-size:0.7rem;
+	font-weight: 500;
+	line-height: 1.2rem;
+	color: #fff;
+	margin-top:5%;
+}
+.bookMap .bookMap-left .book-baseMsg .book-press{
+	font-size:0.7rem;
+	font-weight: 500;
+	line-height: 1.2rem;
+	color: #fff;
+}
+.bookMap .bookMap-left .book-eleMsg{
+	width:100%;
+	height:6.3%;
+	margin:0 auto;
+	margin-top:16%;
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	position: relative;
+}
+.bookMap .bookMap-left .book-eleMsg .RQ{
+	width:100%;
+	font-size:1.2rem;
+	font-weight: 500;
+	line-height: 1.2rem;
+	color: #fff;
+	padding-left:26%;
+	text-align: left;
+	vertical-align: middle;
+	
+}
+.bookMap .bookMap-left .book-eleMsg .RQ .str{
+	letter-spacing: 0.6rem;
+	
+}
+.bookMap .bookMap-left .book-eleMsg .RQ_pic{
+display: inline-block;
+width:1.2rem;
+height:1rem;
+background: url('../images/RQ.png')no-repeat;
+background-size: 100% 100%;
+margin-right: 1%;
+}
+
+.bookMap .bookMap-left .book-eleMsg .resource_pic{
+	display: inline-block;
+	
+width:1.2rem;
+height:1rem;
+background: url('../images/resource.png')no-repeat;
+background-size: 100% 100%;
+margin-right: 1%;
+}
+.bookMap .bookMap-left .book-eleMsg .app_pic{
+	display: inline-block;
+
+width:1.2rem;
+height:1rem;
+background: url('../images/app.png')no-repeat;
+background-size: 100% 100%;
+margin-right: 3.2%;
+	vertical-align: middle;
+}
+.bookMap .bookMap-left .book-eleMsg .resource{
+	font-size:1.2rem;
+	font-weight: 500;
+	padding-left:26%;
+	
+	line-height: 1.2rem;
+	color: #fff;
+	text-align: left;	
+}
+.bookMap .bookMap-left .book-eleMsg .resource .dolt1{
+	display: inline-block;
+	text-indent: 0.6rem;	
+}
+.bookMap .bookMap-left .book-eleMsg .app{
+	font-size:1.2rem;
+	font-weight: 500;
+	padding-left:26%;
+	line-height: 1.2rem;
+	color: #fff;
+	text-align: left;
+	vertical-align: middle;
+		
+}
+.bookMap .bookMap-left .book-eleMsg .app .dolt2{
+	display: inline-block;
+	text-indent: 0.65rem;	
+}
+.bookMap .bookMap-left .RQ-pic{
+	width:36.02%;
+	height: 16.06%;
+	margin:0 auto;
+	margin-top: 38%;
+text-align: center;
+}
+.bookMap .bookMap-left .RQ-pic .RQ-wrap{
+	width:86.56%;
+	height: 66.8%;
+	background-color: #fff;
+	border-radius: 8px;
+	padding: 6.72%;
+	margin-bottom: 10%;
+}
+.bookMap .bookMap-left .RQ-pic .RQ-wrap .sync_RQPic {
+	width:100%;
+	height: 100%;
+}
+.bookMap .bookMap-left .RQ-pic .RQ-wrap .sync_RQPic  img{
+	width:100%;
+	height: 100%;
+}
+.bookMap .bookMap-left .RQ-pic dt span {
+font-size: 0.9rem;
+line-height: 0.9rem;
+color: #fff;
+font-weight: 500;
+
+}
+
+.bookMap .bookMap-right{
+	width:78.82%;
+	height:100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+.bookMap .bookMap-right .top-tips{
+	width:100%;
+	height:11.21%;
+	background: rgba(0,0,0,0.2);
+	border-radius: 10px;
+	position: relative;
+	background: url('../images/map_top.png') no-repeat;
+background-size: 100% 100%;
+}
+.bookMap .bookMap-right .top-tips .top_bg{
+	position: absolute;
+	top:25.845%;
+	left:10%;
+	width:73.26%;
+	height:48.31%;
+	
+}
+.bookMap .bookMap-right .top-tips .wrap-topThings{
+width: 100%;
+height:100%;
+display: flex;
+justify-content: space-between;
+position: relative;
+}
+.bookMap .bookMap-right .top-tips .wrap-topThings dl:nth-child(1) {
+position: absolute;
+top:25%;
+left:12%;
+}
+.bookMap .bookMap-right .top-tips .wrap-topThings dl:nth-child(2){
+position: absolute;
+top:25%;
+left:48%;
+}
+.bookMap .bookMap-right .top-tips .wrap-topThings dl:nth-child(3){
+position: absolute;
+top:25%;
+left:82%;
+}
+.bookMap .bookMap-right .top-tips .wrap-topThings dl dd{
+font-size:1.4rem;
+line-height: 1.4rem;
+color: #fff;
+}
+.bookMap .bookMap-right .top-tips .wrap-topThings dl dd .decimal{
+font-size:0.9rem;
+line-height: 0.9rem;
+color: #fff;
+}
+.bookMap .bookMap-right .top-tips .wrap-topThings dl dt{
+font-size:0.8rem;
+line-height: 2rem;
+color: #fff;
+text-align: center;
+}
+
+
+
+
+.bookMap .bookMap-right .bottom-bookmap{
+	width:100%;
+	height:85.54%;
+	background: rgba(0,0,0,0.2);
+	border-radius: 10px;
+}
+.bookMap .bookMap-right .bottom-bookmap #main{
+	width:100%;
+	height:100%;
+}
+ .brower_star {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    background: url(../images/book_bgStar.png) repeat-x;
+}
+ .shootingStar {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    overflow:hidden;
+}
+.stars {
+    display: block;
+    width: 2.4%;
+    height: 3.1%;
+    position: relative;
+    top: 0%;
+    left: 20%;
+    opacity: 1;
+    background:url("../images/shootingStar.png")no-repeat;
+    background-size: 100% 100%;
+    z-index: -10000;
+}
+
+.stars2 {
+    top: -6%;
+    left: 40%;
+}
+
+.stars3 {
+    top: -10%;
+    left: 60%;
+}
+
+.stars4 {
+    top: 0%;
+    left: 80%;
+}

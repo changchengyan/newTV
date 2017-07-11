@@ -1,0 +1,247 @@
+﻿.clearFloat:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.floatL {
+    float: left;
+}
+
+.floatR {
+    float: right;
+}
+
+
+/*RAYS体系出版社销售额TOP*/
+html,body{
+    width:100%;
+    height:100%;
+}
+
+.publish,
+.user {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    color: #fff;
+}
+
+.publish .pub_bg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -100;
+    overflow: hidden;
+}
+
+.publish .pub_mengceng {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: inherit;
+    background: rgba(0, 0, 0, 0.2)
+}
+
+.publish .pub_skey {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: url(../images/publish_bg.png) no-repeat;
+    background-size: cover;
+    z-index: inherit;
+    /*animation:moving 200s linear 0.8s infinite normal none;*/
+}
+
+.publish .pub_star,
+.user .user_star {
+    position: absolute;
+    width: 3840px;
+    height: 100%;
+    z-index: inherit;
+    background: url(../images/star.png) repeat-x;
+    animation: moving 100s linear 0.8s infinite;
+    -webkit-animation:moving 100s linear 0.8s infinite;
+}
+
+@-webkit-keyframes moving {
+    0% {
+        -webkit-transform: translate3d(0, 0, 0);
+    }
+    100% {
+        -webkit-transform: translate3d(-50%, 0, 0);
+    }
+}
+
+@-moz-keyframes moving {
+    0% {
+        -moz-transform: translate3d(0, 0, 0);
+    }
+    100% {
+        -moz-transform: translate3d(-50%, 0, 0);
+    }
+}
+
+@keyframes moving {
+    0% {
+        transform: translate3d(0, 0, 0);
+    }
+    100% {
+        transform: translate3d(-50%, 0, 0);
+    }
+}
+
+.publish .pubTitle {
+    position:absolute;
+    top:4.2%;
+    left:50%;
+    width: 48.28%;
+    height: 6.48%;
+    background: url('../images/publish_logo.png') no-repeat;
+    background-size: 100% 100%;
+    margin-left: -28.4%;    
+}
+
+.publish .contain {
+    width: 45.6%;
+    /*784*/
+    height: 72.6%;
+    margin-left: 23%;
+    background: url(../images/pub_montain.png) no-repeat;
+    background-size: 100% 100%;
+    position: absolute;
+    bottom: 0;
+    z-index: 100;
+}
+
+.publish .contain .containLeft {
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width:97.8%;
+    /*856*/
+    height: 102.7%;
+    /*805*/
+    z-index: inherit;
+    -webkit-transform: translateX(-6px);
+    -moz-transform: translateX(-6px);
+    transform: translateX(-6px);
+}
+
+.publish .contain .top {
+    /*755*/
+    width: 88.2%;
+    /*307*/
+    height: 38.1%;
+    position: absolute;
+    left: 0;
+    top:0;
+    z-index: inherit;
+}
+
+.publish .contain .top .same {
+
+    width: 100%;
+    height: 26.1%;
+}
+
+.publish .contain .top .dolt-line {
+    width:45.6%;
+    height: 100%;
+    padding-top: 3.5%;
+    background: url(../images/publish_dolt_line.png) no-repeat 0 bottom;
+    background-size: contain;
+    padding-left: 6.9%;
+}
+
+.publish .contain .top .dolt-line .num {
+    font-size: 1.25rem;
+}
+
+.publish .contain .top .name {
+    width:54.4%;
+    height: 100%;
+    font-size:1.25rem;
+    padding-top: 4%;
+    text-align: center;
+    background-color: rgba(146, 0, 0, 0.2);
+    border: 1px solid rgba(0, 160, 233, 0.2);
+    border-radius: 6px;
+}
+
+.publish .contain .top1 {}
+
+.publish .contain .top2 {
+    margin-top: 4.5%;
+}
+
+.publish .contain .top3 {
+    margin-top: 4.5%;
+}
+
+.publish .contain .bottom {
+    width: 100%;
+    height: 46.3%;
+    /*363*/
+    font-size: 1.25rem;
+    position: absolute;
+    left: 0;
+    top: 43.8%;
+    z-index: inherit;
+}
+
+.publish .contain .bottom .same {
+    width: 100%;
+    height:15.7%;
+    /*57*/
+}
+.publish .contain .bottom .dolt-line {
+    width: 68%;
+    height:100%;
+   padding-top:2%;
+   text-align: center;
+    background: url(../images/publish_bottom_doltLine.png) no-repeat 0 bottom;
+    background-size: contain;
+}
+.publish .contain .bottom .num {
+   font-size: 1rem;
+}
+
+.publish .contain .bottom .name {
+    width: 32%;
+    height: 100%;
+    font-size: 1rem;
+   padding-top:2%;
+   text-align: center;
+    background-color: rgba(43, 84, 7, 0.2);
+    border: 1px solid rgba(0, 160, 233, 0.2);
+    border-radius: 6px;
+}
+
+.publish .contain .bottom2 {
+    margin-top: 6.5%;
+}
+
+.publish .contain .bottom3 {
+    margin-top: 6.5%;
+}
+
+.publish .contain .bottom4 {
+    margin-top: 6.5%;
+}
+
+
+.publish .shootingStar {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 0;
+}

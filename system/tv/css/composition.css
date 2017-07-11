@@ -1,0 +1,674 @@
+﻿body {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background: url('../images/composition_bg.png')no-repeat;
+    background-size: 100% 100%;
+}
+
+.stone {
+    height: 20.3%;
+    width: 36.4%;
+    background: url("../images/composition_stone.png") no-repeat;
+    background-size: 100% 100%;
+    position: absolute;
+    left: 50%;
+    bottom: 0px;
+    margin-left: -350px;
+    z-index: -100;
+}
+
+.shootingStar {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -12;
+}
+
+.composition-title {
+    width: 32.4%;
+    height: 7.2%;
+    margin: 0 auto;
+    background: url("../images/component_logo.png") no-repeat;
+    background-size: 100% 100%;
+    position: absolute;
+    left: 50%;
+    top: 4.2%;
+    margin-left: -16.4%;
+}
+
+.superWrap {
+    width: 100%;
+    height: 100%;
+    padding: 3.9% 11.1% 0 4.5%;
+}
+
+.superWrap .wrap {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0px;
+}
+
+.superWrap .wrap .wrap-left {
+    /*624*/
+    width: 38.5%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.superWrap .wrap .wrap-left .composition-publisher-profit {
+    width: 100%;
+    height: 29.9%;
+    margin-left: 9.6%;
+}
+
+.superWrap .wrap .wrap-left .composition-publisher-profit .moon {
+    width: 26.7%;
+    height: 61.1%;
+    margin: 0 auto;
+    background: url("../images/composition_moon.png") no-repeat;
+    background-size: 100% 100%;
+    margin-bottom: 2.1%;
+    margin-left: 14%;
+    transform-origin: bottom center;
+   /* animation: moon 2s linear -2s infinite alternate none;
+    -webkit-animation: moon 2s linear -2s infinite alternate none;*/
+}
+
+@keyframes moon {
+    0% {
+        transform-origin: center center;
+        transform: rotate(-10deg);
+    }
+    100% {
+        transform-origin: center center;
+        transform: rotate(10deg);
+    }
+}
+
+.superWrap .wrap .wrap-left .opacity-box {
+    width: 50%;
+    height: 28.9%;
+    border-radius: 0.5rem;
+    background-color: rgba(6, 4, 4, 0.2);
+    padding-top: 2%;
+    padding-left: 1.6%;
+    padding-bottom: 2%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.superWrap .wrap .wrap-left .opacity-box .num-earn {
+    display: block;
+    font-size: 1.25rem;
+    color: #fff;
+    line-height: 1.25rem;
+}
+
+.superWrap .wrap .wrap-left .opacity-box .title-earn {
+    display: block;
+    font-size: 1rem;
+    line-height: 1rem;
+    color: #fff;
+}
+
+.superWrap .wrap .wrap-left .publisher-constitute {
+    width: 100%;
+    height: 28.4%;
+    text-align: center;
+    margin-bottom: 10.5%;
+    position: relative;
+}
+
+.superWrap .wrap .wrap-left .publisher-constitute .through-line {
+    position: absolute;
+    width: 55%;
+    height: 2.1%;
+    border-bottom: 2px solid #fff;
+    left: 32%;
+    top: 45%;
+    z-index: -111;
+}
+
+.superWrap .wrap .wrap-left .publisher-constitute h5 {
+    width: 32.9%;
+    height: 16.9%;
+    margin: 0 auto;
+    background-color: rgba(51, 45, 86, 0.2);
+    font-size: 1.2rem;
+    color: #fff;
+    font-weight: normal;
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+    line-height: 2.5rem;
+}
+
+.superWrap .wrap .wrap-left .blue-opacity-box {
+    width: 100%;
+    height: 83.1%;
+    border-radius: 10px;
+    background-color: rgba(51, 45, 86, 0.2);
+    color: #fff;
+}
+
+.superWrap .wrap .wrap-left .publisher-type {
+    width: 96.8%;
+    height: 97.9%;
+    padding: 0 1.6%;
+    padding-bottom: 2.1%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.superWrap .wrap .wrap-left .publisher-type li {
+    width: 25%;
+    height: 92.5%;
+    text-align: center;
+    padding-top: 7.5%;
+    margin: 0 auto;
+}
+
+.superWrap .wrap .wrap-left .publisher-type li.first {
+    width: 25%;
+    height: 95.9%;
+    padding-top: 4.1%;
+}
+
+.superWrap .wrap .wrap-left .publisher-type li.first .cbr {
+    width: 61.3%;
+    height: 53.9%;
+    margin: 0 auto;
+    margin-bottom: 8.3%;
+    background: url('../images/composition_astronaut.png')no-repeat;
+    background-size: 100% 100%;
+    /*transform-origin: center center;
+    animation: spaceMan 10s linear infinite;*/
+}
+
+@keyframes spaceMan {
+    20% {
+        transform: rotateZ(-10deg)
+    }
+    40% {
+        transform: rotateZ(0)
+    }
+    60% {
+        transform: rotateZ(10deg)
+    }
+    80% {
+        transform: rotateZ(0deg)
+    }
+    100% {
+        transform: rotateZ(-10deg)
+    }
+}
+
+.superWrap .wrap .wrap-left .publisher-type li .bj {
+    width: 67.9%;
+    height: 37.2%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+   /* transform-origin: center center;
+    animation: starsOfFour 2s linear infinite;*/
+}
+
+.superWrap .wrap .wrap-left .publisher-type li .bj .conposition_sun {
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    background: url("../images/composition_sun.png")no-repeat;
+    background-size: 100% 100%;
+}
+
+.superWrap .wrap .wrap-left .publisher-type li .bj .conposition_earth {
+    width: 53.7%;
+    height: 54.3%;
+    margin: 0 auto;
+    background: url("../images/composition_Earth.png")no-repeat;
+    background-size: 100% 100%;
+}
+
+.superWrap .wrap .wrap-left .publisher-type li .bj .composition_Mars {
+    width: 50%;
+    height: 50.6%;
+    margin: 0 auto;
+    background: url("../images/composition_Mars.png")no-repeat;
+    background-size: 100% 100%;
+}
+
+.superWrap .wrap .wrap-left .publisher-type li .bj .composition_Mercury {
+    width: 32.9%;
+    height: 33.3%;
+    margin: 0 auto;
+    background: url("../images/composition_Mercury.png")no-repeat;
+    background-size: 100% 100%;
+}
+
+@keyframes starsOfFour {
+    from {
+        transform: rotateZ(0deg)
+    }
+    to {
+        transform: rotateZ(360deg)
+    }
+}
+
+.superWrap .wrap .wrap-left .publisher-type li p.title-publisher {
+    margin-top: 5%;
+    font-size: 1rem;
+    line-height: 1.25rem;
+    font-weight: 500;
+}
+
+.superWrap .wrap .wrap-left .publisher-type li p.num-publisher {
+    font-size: 1.25rem;
+    font-weight: 500;
+    line-height: 2.4rem;
+}
+
+.superWrap .wrap-middle {
+    width: 33.9%;
+    height: 100%;
+    padding-top: 18.5%;
+}
+
+.superWrap .wrap-middle .composition-Earth {
+    width: 100%;
+    height: 70.2%;
+    padding: 2.5% 1.9%;
+    border: 1px solid #fff;
+    border-radius: 100%;
+    position: relative;
+}
+ .Earth_40{
+    position: absolute;
+    top:46.5%;
+    left:26%;
+    text-align: center;
+}
+ .Earth_40 .press{
+   color: #fff;
+   font-size: 1rem;
+   line-height: 1.6rem;
+   font-weight: 500;
+}
+ .Earth_40 .press-num{
+    color: #fff;
+   font-size: 1.6rem;
+   line-height: 1.6rem;
+   font-weight: 700;
+}
+ .Earth_5{
+    position: absolute;
+    top:23.5%;
+    left:58%;
+    text-align: center;
+    
+}
+ .Earth_5 .reader{
+    color: #fff;
+   font-size: 1rem;
+   line-height: 1.6rem;
+   font-weight: 500;
+}
+ .reader_nums{
+   color: #fff;
+   font-size: 1.6rem;
+   line-height: 1.6rem;
+   font-weight: 700;
+}
+
+.Earth_20{
+    position: absolute;
+    top:47%;
+    left:65.5%;
+    text-align: center;
+    
+}
+.Earth_20 .editer{
+   color: #fff;
+   font-size: 1rem;
+   line-height: 1.2rem;
+   font-weight: 500;
+}
+.editer_nums{
+    color: #fff;
+   font-size: 1.6rem;
+   line-height: 1.6rem;
+   font-weight: 700;
+}
+ .Earth_25{
+    position: absolute;
+    top:66.5%;
+    left:68.5%;
+    text-align: center;
+    
+}
+.Earth_25 .runs-num{
+    color: #fff;
+   font-size: 1.6rem;
+   line-height: 1.6rem;
+   font-weight: 700;
+}
+.Earth_25 .runs{
+    color: #fff;
+   font-size: 1rem;
+   line-height: 1rem;
+   font-weight: 700;
+}
+
+
+.superWrap .wrap-middle .composition-Earth .earth_fourPart {
+    width: 100%;
+    height: 100%;
+}
+
+.superWrap .wrap-middle .composition-Earth .earth_fourPart .partOne {
+    width: 55.9%;
+    height: 71.4%;
+    position: absolute;
+    left: 7%;
+    top: 12%;
+   /* animation: fire1 2s linear -2s infinite alternate none;
+    -webkit-animation: fire1 2s linear -2s infinite alternate none;*/
+}
+
+.superWrap .wrap-middle .composition-Earth .earth_fourPart .partOne .composition_Earth_40 {
+    width: 100%;
+    height: 100%;
+    background: url("../images/composition_Earth_40.png")no-repeat;
+    background-size: 100% 100%;
+}
+
+.superWrap .wrap-middle .composition-Earth .earth_fourPart .partTwo {
+    width: 20%;
+    height: 39.4%;
+    position: absolute;
+    left: 58.8%;
+    top: 7.8%;
+  /*  animation: fire2 2s linear -2s infinite alternate none;
+    -webkit-animation: fire2 2s linear -2s infinite alternate none;*/
+}
+
+.superWrap .wrap-middle .composition-Earth .earth_fourPart .partTwo .composition_Earth_5 {
+    width: 100%;
+    height: 100%;
+    background: url("../images/composition_Earth_5.png")no-repeat;
+    background-size: 100% 100%;
+}
+
+.superWrap .wrap-middle .composition-Earth .earth_fourPart .partThree {
+    width: 27.8%;
+    height: 45.1%;
+    position: absolute;
+    left: 65%;
+    top: 19.6%;
+    /*animation: fire3 2s linear -2s infinite alternate none;
+    -webkit-animation: fire3 2s linear -2s infinite alternate none;*/
+}
+
+.superWrap .wrap-middle .composition-Earth .earth_fourPart .partThree .composition_Earth_20 {
+    width: 100%;
+    height: 100%;
+    background: url("../images/composition_Earth_20.png")no-repeat;
+    background-size: 100% 100%;
+}
+
+.superWrap .wrap-middle .composition-Earth .earth_fourPart .partFour {
+    width: 46.1%;
+    height: 26.3%;
+    position: absolute;
+    left: 41.2%;
+    top: 65%;
+   /* animation: fire4 2s linear -2s infinite alternate none;
+    -webkit-animation: fire4 2s linear -2s infinite alternate none;*/
+}
+
+@keyframes fire1 {
+    0% {
+        transform: translateX(-10px);
+    }
+    100% {
+        transform: translateX(0px);
+    }
+}
+
+@keyframes fire2 {
+    0% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+@keyframes fire3 {
+    0% {
+        transform: translateX(10px);
+    }
+    100% {
+        transform: translateX(0px);
+    }
+}
+
+@keyframes fire4 {
+    0% {
+        transform: translateY(10px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+.superWrap .wrap-middle .composition-Earth .earth_fourPart .partFour .composition_Earth_25 {
+    width: 100%;
+    height: 100%;
+    background: url("../images/composition_Earth_25.png")no-repeat;
+    background-size: 100% 100%;
+}
+
+.superWrap .wrap-middle .move {
+    transform: translate3d(0, 0, 0);
+}
+
+.superWrap .wrap-middle .Earth-all {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    
+}
+  .earth-tips{
+    position: absolute;
+    top: 22%;
+    left: 23.5%;
+    width: 50%;
+    height: 50.56%;
+    background: url('../images/component_earthTip.png') no-repeat;
+    background-size: 100% 100%;
+    z-index: 100;
+}
+
+.superWrap .wrap-middle .Earth-one {
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+    position: absolute;
+    top: 29%;
+    left: -42%;
+    font-size: 0;
+}
+
+.superWrap .wrap-middle .Earth-two {
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+    position: absolute;
+    top: -17%;
+    right: -65%;
+    font-size: 0;
+}
+
+.superWrap .wrap-middle .Earth-three {
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+    position: absolute;
+    top: 22%;
+    right: -87%;
+    font-size: 0;
+}
+
+.superWrap .wrap-middle .Earth-four {
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+    position: absolute;
+    top: 68%;
+    right: -62%;
+    font-size: 0;
+}
+
+.superWrap .wrap-middle .Earth-all .earth-word {
+    display: inline-block;
+    padding: 1.6% 6.5%;
+    border: 1px solid #00a0e9;
+    border-radius: 10px;
+}
+
+.superWrap .wrap-middle .earth-word .num-part {
+    color: #fff;
+    font-size: 1.6rem;
+    line-height: 1.6rem;
+}
+
+.superWrap .wrap-middle .earth-word .title-part {
+    color: #fff;
+    font-size: 1.6rem;
+    line-height: 1.8rem;
+}
+
+.superWrap .wrap-middle .Earth-one .earth-line {
+    display: inline-block;
+    width: 30%;
+    height: 2%;
+    background: url("../images/line_one.png") no-repeat left center;
+}
+
+.superWrap .wrap-middle .Earth-two .earth-line {
+    display: inline-block;
+    width: 12.7%;
+    height: 36.5%;
+    vertical-align: bottom;
+    background: url("../images/line_two.png") no-repeat left bottom;
+}
+
+.superWrap .wrap-middle .Earth-two .earth-word {
+    vertical-align: top;
+}
+
+.superWrap .wrap-middle .Earth-three .earth-line {
+    display: inline-block;
+    width: 13.1%;
+    height: 2.4%;
+    background: url("../images/line_three.png") no-repeat left center;
+}
+
+.superWrap .wrap-middle .Earth-four .earth-line {
+    display: inline-block;
+    width: 36.4%;
+    height: 3.1%;
+    background: url("../images/line_four.png") no-repeat left center;
+}
+
+.superWrap .wrap-middle .Earth-all .earth-point {
+    display: inline-block;
+    width: 2%;
+    height: 2%;
+    background-color: #00a0e9;
+    border: 2px solid #fff;
+    border-radius: 100%;
+}
+
+.superWrap .wrap .wrap-right {
+    width: 15.1%;
+    height: 23.7%;
+    margin-top: 15%;
+    margin-left: 15%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.superWrap .wrap .wrap-right .terminal-salate {
+    width: 51.4%;
+    height: 55.5%;
+    margin: 0 auto;
+    background: url('../images/composition_terminal.png')no-repeat;
+    background-size: 100% 100%;
+    transform-origin: center center;
+    /*animation: salate 2s linear -2s infinite alternate none;
+    -webkit-animation: salate 2s linear -2s infinite alternate none;*/
+}
+
+@keyframes salate {
+    0% {
+        transform: translateX(-20px);
+    }
+    100% {
+        transform: translateX(20px);
+    }
+}
+
+.superWrap .wrap .wrap-right .opacity-box {
+    height: 100%;
+    height: 39.7%;
+    background-color: rgba(51, 45, 86, 0.2);
+    border-radius: 10px;
+    padding: 4% 4.1%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.superWrap .wrap .wrap-right .opacity-box span.title-run {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #fff;
+    line-height: 1.25rem;
+    display: block;
+    text-align: center;
+}
+
+.superWrap .wrap .wrap-right .opacity-box span.num-run {
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: #fff;
+    line-height: 1.6rem;
+}
+
+.superWrap .wrap .wrap-right .composition-stone {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 35.9%;
+    height: 20%;
+    background: url(../images/composition_stone.png) no-repeat;
+    background-size: 100% 100%;
+}
+
+.showMove .shootingStar {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -200;
+}

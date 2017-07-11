@@ -1,0 +1,141 @@
+html,body{
+	width:100%;
+	height:100%;
+}
+
+.typecalCase{
+	width: 100%;
+	height:100%;
+	background: url('../images/book_bg.png') no-repeat;
+	background-size: 100% 100%;
+	position: relative;
+	overflow: hidden;
+}
+.typecalCase .Case-title{
+	position: absolute;
+	top:3.7%;
+	left:35%;
+	width:33.07%;
+	height: 6.57%;
+	background: url('../images/book_logo.png') no-repeat;
+	background-size: 100% 100%;
+}
+.typecalCase .bottom-earth{
+	width:24.53%;
+	height:19.72%;
+	background: url('../images/book_earth.png') no-repeat;
+	background-size: 100% 100%;	
+	position: absolute;
+	bottom:0;
+	left:0;
+}
+.typecalCase .case-bookView{
+	width:96.04%;
+	height:41.85%;
+    margin:0 auto;
+    margin-top: 14%;
+	display: flex;
+	justify-content: space-between;
+	position: relative;
+	z-index: 100000;
+}
+.typecalCase .case-bookView li{
+	width:17.3%;
+	height:100%;
+	background: rgba(0,0,0,0.2);
+	border-radius: 10px;
+	cursor: pointer;
+}
+.typecalCase .case-bookView li .book_pic{
+	width:63.32%;
+	height:57.52%;
+	background-color: #fff;
+	margin: 0 auto;
+	margin-top: 15%;
+}
+.typecalCase .case-bookView li .book_pic .sync-bookPic{
+	width:93.56%;
+	height:100%;
+	margin: 0 auto;	
+	text-align: center;
+}
+.typecalCase .case-bookView li .book_pic .sync-bookPic img{
+	width:100%;
+	height:100%;
+
+}
+
+.typecalCase .case-bookView li .bookName{
+	width:100%;
+	height:1.6rem;
+	text-align: center;
+	font-size: 1.6rem;
+	line-height: 1.6rem;
+	color: #fff;
+	font-weight: 500;
+	margin-top: 10%;
+	overflow: hidden;
+}
+.typecalCase .case-bookView li .bookPirce{
+	text-align: center;
+	font-size: 1rem;
+	line-height: 1rem;
+	color: #fff;
+	font-weight: 500;
+	margin-top: 5%;
+}
+.typecalCase .case-bookView li .bookPirce .decimal{
+	font-size: 0.7rem;
+	line-height: 0.7rem;
+	color: #fff;
+	font-weight: 500;
+}
+ .brower_star {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    background: url(../images/book_bgStar.png) repeat-x;
+}
+ .shootingStar {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    overflow:hidden;
+}
+.stars {
+    display: block;
+    width: 2.4%;
+    height: 3.1%;
+    position: relative;
+    top: 0%;
+    left: 20%;
+    opacity: 1;
+    background:url("../images/shootingStar.png")no-repeat;
+    background-size: 100% 100%;
+    z-index: -10000;
+}
+
+.stars2 {
+    top: -6%;
+    left: 40%;
+}
+
+.stars3 {
+    top: -10%;
+    left: 60%;
+}
+
+.stars4 {
+    top: 0%;
+    left: 80%;
+}
+#case_bookView .txt{
+            border:none;            
+        }
+#case_bookView li.sync{
+    border: 1px solid goldenrod;  
+}

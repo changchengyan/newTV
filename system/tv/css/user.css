@@ -1,0 +1,554 @@
+﻿/*RAYS用户总览*/
+
+.user {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.user .userTitle {
+    width:25.83%;
+    height:6.48%;
+    background: url('../images/userLogo.png') no-repeat;
+    background-size: 100% 100%;
+    position:absolute;
+    top:4.2%;
+    left:50%;
+    margin-left: -15%;
+    font-size: 3.5rem;
+    line-height: 3.5rem;
+    text-align: center;
+    font-weight: 700;
+    color: #fff;
+}
+
+.user .user_skey {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: url(../images/user_bg2.png) no-repeat center center;
+    background-size: cover;
+    z-index: -1000;
+}
+
+.user .user_light {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: url(../images/user_bg1.png) no-repeat center center;
+    background-size: cover;
+    z-index: -900;
+}
+
+
+
+.user .user_ball {
+    position: absolute;
+    width: 17.19%;
+    height: 8.61%;
+    left: -5.2%;
+    bottom: 0%;
+    background: url(../images/user-ball.png) no-repeat ;
+    background-size: 100% 100%;
+    z-index: 100;
+}
+.user .user_rb {
+    width: 10.4%;
+    height: 11.2%;
+    position: absolute;
+    left: 78%;
+    bottom: -4.6%;
+    background: url(../images/user_sucai3.png) no-repeat center center;
+    -webkit-transform-origin: center center;
+    -moz-transform-origin: center center;
+    transform-origin: center center;
+}
+.user .user_rt {
+    width: 10.4%;
+    height: 11.2%;
+    position: absolute;
+    left: 85%;
+    top: 4%;
+    background: url(../images/user_sucai3.png) no-repeat center center;
+    -webkit-transform-origin: 30% 58%;
+    -moz-transform-origin: 30% 58%;
+    transform-origin: 30% 58%;
+}
+.user .contain {
+    width: 100%;
+    height: 100%;
+}
+
+.user .user_bg .readers {
+    position: absolute;
+    left: 26.2%;
+    top: 25.83%;
+    width: 20.83%;
+    height: 8.24%;
+    background: url(../images/user_logo.png) no-repeat;
+    background-size: 100% 100%;
+}
+.user .RaysNum {
+    width: 100%;
+    height: 10.65rem;
+    position: absolute;
+    top: 40%;
+    text-align: center;
+    margin: 0 auto;
+    font-size: 0px;
+    z-index: 100;
+}
+
+.mt-number-animate {
+    width: 100%;
+    line-height: 10.65rem;
+    height: 10.65rem;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.mt-number-animate .mt-number-animate-dot {
+    width:5.15rem;
+    height: 10.65rem;
+    /*设置分割符宽度*/
+    text-align: center;
+    padding-top: 4.6rem;
+}
+
+.mt-number-animate .mt-number-animate-dom {
+    width: 5.15rem;
+    height: 10.65rem;
+    /*设置单个数字宽度*/
+    text-align: center;
+    float: left;
+    position: relative;
+    margin: 0 0.8%;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.mt-number-animate .mt-number-animate-dom .mt-number-animate-span {
+    width: 5.15rem;
+    height: 10.65rem;
+}
+
+.mt-number-animate .mt-number-animate-dom .mt-number-animate-span>div {
+    float: left;
+    /*设置单个数字宽度*/
+   width: 5.15rem;
+    height: 7.65rem;
+    margin-top: 3%;
+
+}
+
+.mt-number-animate .mt-number-animate-dom .mt-number-animate-span .img-0 {
+    width: 5.15rem;
+    height: 7.65rem;
+    background: url('../images/data_0.png') no-repeat;
+    background-size: 100% 100%;
+}
+
+.mt-number-animate .mt-number-animate-dom .mt-number-animate-span .img-1 {
+ width: 5.15rem;
+    height: 7.65rem;
+    background: url('../images/data_1.png') no-repeat;
+    background-size: cover;
+}
+
+.mt-number-animate .mt-number-animate-dom .mt-number-animate-span .img-2 {
+   width: 5.15rem;
+    height: 7.65rem;
+    background: url('../images/data_2.png') no-repeat;
+    background-size: cover;
+}
+
+.mt-number-animate .mt-number-animate-dom .mt-number-animate-span .img-3 {
+    width: 5.15rem;
+    height: 7.65rem;
+    background: url('../images/data_3.png') no-repeat;
+    background-size: cover;
+   
+}
+
+.mt-number-animate .mt-number-animate-dom .mt-number-animate-span .img-4 {
+    width: 5.15rem;
+    height: 7.65rem;
+    background: url('../images/data_4.png') no-repeat;
+    background-size: cover;
+}
+
+.mt-number-animate .mt-number-animate-dom .mt-number-animate-span .img-5 {
+   width: 5.15rem;
+    height: 7.65rem;
+    background: url('../images/data_5.png') no-repeat;
+    background-size: cover;
+
+}
+
+.mt-number-animate .mt-number-animate-dom .mt-number-animate-span .img-6 {
+  width: 5.15rem;
+    height: 7.65rem;
+    background: url('../images/data_6.png') no-repeat;
+    background-size: cover;
+
+}
+
+.mt-number-animate .mt-number-animate-dom .mt-number-animate-span .img-7 {
+   width: 5.15rem;
+    height: 7.65rem;
+    background: url('../images/data_7.png') no-repeat;
+    background-size: cover;
+
+}
+
+.mt-number-animate .mt-number-animate-dom .mt-number-animate-span .img-8 {
+    width: 5.15rem;
+    height: 7.65rem;
+    background: url('../images/data_8.png') no-repeat;
+    background-size: cover;
+
+}
+
+.mt-number-animate .mt-number-animate-dom .mt-number-animate-span .img-9 {
+   width: 5.15rem;
+    height: 7.65rem;
+    background: url('../images/data_9.png') no-repeat;
+    background-size: cover;
+    
+}
+
+.mt-number-animate .mt-number-animate-dot img.dlot {
+    display: inline-block;
+    /*设置单个数字宽度*/
+    width: 27.2%;
+    margin-top: 45%;
+}
+
+.dlot {
+    display: inline-block;
+    margin-left: 10.8%;
+}
+
+.user .contain .sex {
+    width:21.09%;
+    height:31.3%;
+    position: absolute;
+    left: 9.25%;
+    bottom: 6.39%;
+}
+
+.user .contain .sex .title-user {
+    width: 66.42%;
+    height: 25.07%;
+    padding-top: 6.1%;
+    display: block;
+    font-size: 1.6rem;
+    color: #fff;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 6px;
+    border: 1px solid rgba(112, 124, 166, 0.3);
+}
+.chart-wrap{
+    width: 87.16%;
+    height:68.36%;
+    margin-top: 6.57%;
+    position: relative;
+}
+.user .contain .sex .chart-wrap .sex-chart{
+    width: 100%;
+    height:100%;
+}
+.user .contain .sex .chart-wrap .sex-light{
+    width: 44.69%;
+    height:100%;
+background: url('../images/sex_light.png') no-repeat;
+background-size: 100% 100%;
+position: absolute;
+left:10%;
+top:-1%;
+}
+.user .contain .sex .chart-wrap .sex-mask{
+    width: 32.16%;
+    height:95%;
+    background: url('../images/user_mask.png') no-repeat;
+    background-size: 100% 100%;
+    position: absolute;
+    left:17%;
+    top:2%;
+}
+.user .contain .sex .chart-wrap .detail {
+    width: 100%;
+    height: 100%;
+    color: #fff;
+    position: absolute;
+    top:-10%;
+    right:-20%;
+    text-align: center;
+    padding:5%;
+    padding-top: 2%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.user .contain .sex .man {
+    font-size: 1rem;
+    line-height: 1rem;
+    position: absolute;
+    top:18%;
+    right:4%;
+
+}
+.user .contain .sex .man>span {
+    font-size: 1.6rem;
+}
+
+.user .contain .sex .fmale{
+         position: absolute;
+    top:55%;
+    right:4%;
+}
+.user .contain .sex .fmaleName {
+    font-size: 1rem;
+    line-height: 1rem;
+
+
+}
+
+.user .contain .sex  .fmale .woman {
+    font-size: 1.6rem;
+    line-height: 1.6rem;
+}
+.user .contain .sex .other {
+    font-size: 1rem;
+    line-height: 1rem;
+    position: absolute;
+    top:99%;
+    right:4%;
+
+}
+.user .contain .sex .other>span {
+    font-size: 1.6rem;
+}
+
+.user .contain .gender{
+	width:9%;
+	height:25.78%;
+	position: absolute;
+	bottom:3.1%;
+	left:20.5%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+}
+.user .contain  .mans{
+	width:8%;
+	height:5%;
+	background-color: #e56c0a;
+	border-radius: 5px;
+}
+.user .contain  .womens{
+	width:8%;
+	height:5%;
+	background-color: #f400e4;
+	border-radius: 5px;
+}
+.user .contain  .others{
+	width:8%;
+	height:5%;
+	background-color: #2cd9f3;
+	border-radius: 5px;
+}
+/*.user .contain  .payAndNoPay-num{
+	width:9%;
+	height:1.78%;
+	position: absolute;
+	top:20.5%;
+	left:6.5%;
+	display: flex;
+	justify-content: space-around;
+}*/
+/*.user .contain  #pay{
+	color:#fff;
+	font-size: 0.6rem;
+	line-height: 0.6rem;
+}
+.user .contain  #noPay{
+	color:#fff;
+	font-size: 0.6rem;
+	line-height: 0.6rem;
+}*/
+.user .contain .xiaofei {
+    width:17.71%;
+    height:33.61%;
+    position: absolute;
+    left: 3%;
+    top: 10%;
+    z-index: 100;
+    overflow: visible !important; 
+}
+.user .contain .xiaofei .title-user {
+    width: 78.82%;
+    height: 23.14%;
+    font-size: 1.6rem;
+    padding-top: 7.5%;
+    display:block;
+    color: #fff;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 6px;
+    border: 1px solid rgba(112, 124, 166, 0.3);
+}
+
+.user .contain .xiaofei  #xiaofei_canvas{
+    position: absolute;
+    width:100%;
+    height:100%;
+    top:18%;
+    left:-5%;
+    overflow: visible !important;
+}
+.user .contain .xiaofei  #xiaofei_canvas>div{
+   overflow: visible !important;
+}
+.user .contain .xiaofei  #xiaofei_canvas>div>canvas{
+   overflow: visible !important;
+}
+
+
+
+.user .contain .xiaofei .num{
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1rem;
+    position: absolute;
+    color: #fff;
+    top: 65%;
+    left:36%;
+}
+.user .contain .xiaofei .xiaofei_big{
+        width:66.18%;
+        height:61.98%;
+        border:1px solid #6ab5d8;
+        border-radius: 100%;
+        position: absolute;
+        left:12%;
+        bottom:1.5%;
+}
+.user .contain .xiaofei .xiaofei_sm{
+        width:30.88%;
+        height:28.93%;
+        border:1px solid #cb819c;
+        border-radius: 100%;
+        position: absolute;
+        left:30%;
+        bottom:18%;
+}
+.user .contain .rank{
+    width:22.14%;
+    height:43.24%;
+    position: absolute;
+    right:0%;
+    top:20%;
+    background:url('../images/user_rank.png') no-repeat;
+    background-size: 100% 100%;
+    color: #fff;
+    z-index: 1000
+}
+.user .contain .rank #top1{
+    position: absolute;
+    top:28.5%;
+    right: 58%;
+    font-size: 1rem;
+    line-height: 1rem;
+}
+.user .contain .rank #top2{
+    position: absolute;
+    top:47%;
+    right: 51%;
+    font-size: 1rem;
+    line-height: 1rem;
+}
+.user .contain .rank #top3{
+    position: absolute;
+    top:64.5%;
+    right: 41.5%;
+    font-size: 1rem;
+    line-height: 1rem;
+}
+.user .contain .active {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 43.6%;
+    /*43.6% 839px*/
+    height: 31%;
+    /*29% 339px*/
+    color: #fff;
+}
+.user .contain .active{
+    /*841*/
+    width:43.8%;
+    /*336*/
+    height: 31.1%;
+    position: absolute;
+    bottom: 0;
+    right:0;
+}
+
+.user .contain .active .pic {
+    width: 100%;
+    height: 93.5%;
+    position: absolute;
+    left: 0;
+    top: 2%;
+    background: url(../images/user_active.png) no-repeat;
+    background-position:right bottom;
+    background-size: 100% 100%;
+}
+
+.user .contain .active .detail {
+    width: 54.6%;
+    /*59% 495px*/
+    height: 47%;
+    /*50% 158px*/
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 6px;
+    padding-left: 30.9%;
+}
+
+.user .contain .active .detail p.num {
+    padding-top: 18.6%;
+    font-size: 1.6rem;
+    line-height: 1.6rem;
+}
+
+.user .contain .active .detail p.text {
+    padding-top: 6.6%;
+    font-size: 1rem;
+    line-height: 1rem;
+}
+
+ .shootingStar {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -99;
+}
+
+.user .shootingStar {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -100;
+}

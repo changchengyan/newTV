@@ -1,0 +1,166 @@
+html,
+body {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    font-family: sans-serif,"微软雅黑","黑体","幼圆";
+} 
+html {
+    font-size: 14px;
+}
+
+@media screen and (max-width:1200px) {
+    html {
+        font-size: 10px;
+    }
+}
+
+@media screen and (min-width:1200px) and (max-width:1440px) {
+    html {
+        font-size: 14px;
+    }
+}
+
+@media screen and (min-width:1440px) and (max-width:1920px) {
+    html {
+        font-size: 20px;
+    }
+}
+
+@media screen and (min-width:2400px) {
+    html {
+        font-size: 21px;
+    }
+}
+       body {
+       	position:relative ;
+         background:url(../images/QR_code.png) no-repeat;
+         background-size: 100% 100%
+       }
+       .brower_star {
+	    width: 100%;
+	    height: 100%;
+	    position: absolute;
+	    top: 0;
+	    left: 0;
+	    z-index: -500;
+	    background: url(../images/star.png) repeat-x;
+	}
+       .QRExperence-title {
+
+		width:25.73%;
+		height:6.48%;
+		position: absolute;
+		top:3.5%;
+		left:50%;
+		margin-left:-15%;
+        background: url(../images/QR_logo.png) no-repeat ;
+        background-size: 100% 100%;
+       }
+       div#conetent{
+       	width:100%;
+       	height:100%!important;
+       	padding-top: 8.41%;
+       	overflow: visible !important;
+       	display: flex;
+		justify-content: space-between;
+       }
+       .left-phone {
+           width: 30%;
+           height: 100%;
+       }
+       .left-phone h3 {
+            font-size: 0.7rem;
+            color: #fff;
+            box-sizing: border-box;
+            font-weight: normal;
+            line-height: 1.5rem;
+            text-align: left;
+            width: 100%;
+
+           text-align: center;
+
+       }
+       .phone-img {
+            width: 80%;
+            height:44.46%;
+            margin:  0 auto;
+            background: url(../images/QRS_phone.png) no-repeat   center top;
+            background-size: contain;
+       }
+       .QR-listBox {
+           width: 70%;
+           height: 100%;
+           padding-right: 5.65%;
+            overflow: visible !important;
+       }
+       .QR-list {
+            width: 100%;
+            height:100%;
+            font-size: 0;
+            text-align: center;
+            overflow: visible !important;
+
+       }
+       .QR-list li {
+            display: inline-block;
+            box-sizing: border-box;
+            width: 20%;
+            margin-top: 4%;
+            max-width: 265px;
+            padding: 0 20px;
+            vertical-align: top;
+            overflow: visible !important;
+       }
+        @media screen and (max-width:1200px){
+        .QR-list li {
+                    display: inline-block;
+                    box-sizing: border-box;
+                    width: 20%;
+                    margin-top: 4%;
+                    max-width: 265px;
+                    padding: 0 0.5rem;
+                    vertical-align: top;
+               }
+        }
+       .item-box {
+            width: 100%;
+            height: 100%;
+            box-sizing: border-box;
+            padding-top:13.79%;
+            border-radius: 10px;
+            background: rgba(0,0,0,0.2);
+       }
+       .item-box .imgspan {
+            display: block;
+            width: 75%;
+            margin: 0 auto;
+
+       }
+       .item-box h4 {
+            font-size: 1rem;
+            font-weight: 500;
+            width: 80%;
+			margin: 0 auto;
+            color: #fff;
+            text-align: center;
+            line-height: 1rem;
+            margin-top: 10.97%;
+       }
+       .item-box p {
+            font-size: 0.6rem;
+            line-height: 0.6rem;
+             width: 80%;
+             margin: 0 auto;
+            color: #fff;
+            text-align: center;
+            margin-top: 10%;
+       }
+       .shootingStar{
+       	width: 100%;
+       	height:100%;
+       	position: absolute;
+       	top: 0;
+       	left: 0;
+       	z-index: -200;
+       }

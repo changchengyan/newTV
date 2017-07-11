@@ -1,0 +1,618 @@
+﻿body {
+    position: relative;
+    padding: 3.9% 3.9% 4.3% 4.4%;
+    background: url('../images/bg_1.png') no-repeat;
+    background-size: 100% 100%;
+    overflow: hidden;
+}
+
+.brower-total {
+    width: 100%;
+    height: 100%;
+}
+
+.trideNumScroll {
+    width: 91.8%;
+    height: 10.65rem;
+    position: absolute;
+    top: 40%;
+    z-index: 1000;
+    text-align: center;
+    margin: 0 auto;
+    font-size: 0px;
+}
+div.mt-number-animate-dom[data-num="."]{
+	display: none;
+	width:0.01rem;
+}
+
+.trideNumScroll .money-pic{
+display: inline-block;
+	width:5.15rem;
+	height:7.65rem;
+	background: url('../images/money.png') no-repeat;
+	background-size: 100% 100%;
+	
+}
+.mt-number-animate {
+	display: inline-block;
+    width: 100%;
+    line-height: 10.65rem;
+    height: 10.65rem;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.mt-number-animate .mt-number-animate-dot {
+    width:3.1rem;
+    height: 10.65rem;
+    /*设置分割符宽度*/
+    text-align: center;
+    padding-top: 6.6rem;
+}
+
+.mt-number-animate .mt-number-animate-dom {
+    width: 5.15rem;
+    height: 10.65rem;
+    /*设置单个数字宽度*/
+    text-align: center;
+    float: left;
+    position: relative;
+    margin: 0 0.8%;
+    display: table-cell;
+    vertical-align: middle;
+}
+.mt-number-animate .last-num {
+	width:3rem;
+	height:10.65rem;
+}
+.mt-number-animate .mt-number-animate-dom.last-num .mt-number-animate-span div{
+	width:2.6rem;
+	height:3.85rem;
+	margin-top:80%;
+}
+
+.mt-number-animate .mt-number-animate-dom .mt-number-animate-span {
+    width: 5.15rem;
+    height: 10.65rem;
+/*    display: flex;
+    flex-direction: column;
+    justify-content: center;*/
+}
+
+.mt-number-animate .mt-number-animate-dom .mt-number-animate-span>div {
+    float: left;
+    /*设置单个数字宽度*/
+   width: 5.15rem;
+    height: 7.65rem;
+    margin-top: 3%;
+
+}
+
+.mt-number-animate .mt-number-animate-dom .mt-number-animate-span .img-0 {
+    width: 5.15rem;
+    height: 7.65rem;
+    background: url('../images/data_0.png') no-repeat;
+    background-size: 100% 100%;
+}
+
+.mt-number-animate .mt-number-animate-dom .mt-number-animate-span .img-1 {
+width: 5.15rem;
+    height: 7.65rem;
+    background: url('../images/data_1.png') no-repeat;
+    background-size: cover;
+}
+
+.mt-number-animate .mt-number-animate-dom .mt-number-animate-span .img-2 {
+width: 5.15rem;
+    height: 7.65rem;
+    background: url('../images/data_2.png') no-repeat;
+    background-size: cover;
+}
+
+.mt-number-animate .mt-number-animate-dom .mt-number-animate-span .img-3 {
+   width: 5.15rem;
+    height: 7.65rem;
+    background: url('../images/data_3.png') no-repeat;
+    background-size: cover;
+   
+}
+
+.mt-number-animate .mt-number-animate-dom .mt-number-animate-span .img-4 {
+    width: 5.15rem;
+    height: 7.65rem;
+    background: url('../images/data_4.png') no-repeat;
+    background-size: cover;
+}
+
+.mt-number-animate .mt-number-animate-dom .mt-number-animate-span .img-5 {
+  width: 5.15rem;
+    height: 7.65rem;
+    background: url('../images/data_5.png') no-repeat;
+    background-size: cover;
+
+}
+
+.mt-number-animate .mt-number-animate-dom .mt-number-animate-span .img-6 {
+  width: 5.15rem;
+    height: 7.65rem;
+    background: url('../images/data_6.png') no-repeat;
+    background-size: cover;
+
+}
+
+.mt-number-animate .mt-number-animate-dom .mt-number-animate-span .img-7 {
+   width: 5.15rem;
+    height: 7.65rem;
+    background: url('../images/data_7.png') no-repeat;
+    background-size: cover;
+
+}
+
+.mt-number-animate .mt-number-animate-dom .mt-number-animate-span .img-8 {
+   width: 5.15rem;
+    height: 7.65rem;
+    background: url('../images/data_8.png') no-repeat;
+    background-size: cover;
+
+}
+
+.mt-number-animate .mt-number-animate-dom .mt-number-animate-span .img-9 {
+   width: 5.15rem;
+    height: 7.65rem;
+    background: url('../images/data_9.png') no-repeat;
+    background-size: cover;
+    
+}
+
+.mt-number-animate .mt-number-animate-dot img.dlot {
+    display: inline-block;
+    /*设置单个数字宽度*/
+    width: 0.85rem;
+    margin-top: -16%;
+}
+
+.dlot {
+    display: inline-block;
+    margin-left: 10.8%;
+}
+
+.brower-total .wrap-container {
+    width: 100%;
+    height: 100%;
+}
+
+.brower-total .wrap-container .brower-title {
+    width: 28%;
+    height: 7.1%;
+    margin: 0 auto;
+    background: url('../images/data_title.png') no-repeat;
+    background-size: 100% 100%;
+}
+
+.brower-total .wrap-container .wrap {
+    width: 100%;
+    height: 92.9%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.brower-total .wrap-container .wrap .leftInfo {
+    width: 15.1%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.brower-total .wrap-container .wrap .leftInfo .cover {
+    width: 100%;
+    height:8.89%;
+    margin-top: 10%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.brower-total .wrap-container .wrap .leftInfo .cover .left_pic {
+    width: 20.3%;
+    height: 100%;
+    padding-top: 2.5%;
+}
+
+.brower-total .wrap-container .wrap .leftInfo .cover .left_pic .data_astronaut_ball {
+    width: 100%;
+    height:61.36%;
+    margin: 0 auto;
+    background: url('../images/data_ball.png') no-repeat;
+    background-size: 100% 100%;
+}
+
+.brower-total .wrap-container .wrap .leftInfo .cover .context {
+    width: 74.4%;
+    height: 100%;
+    padding: 5% 0% 5% 9.8%;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.brower-total .wrap-container .wrap .leftInfo .cover .context .bottom {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.brower-total .wrap-container .wrap .leftInfo .cover .context .top span.number {
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: #fff;
+    line-height: 1.25rem;
+    display: block;
+}
+
+.brower-total .wrap-container .wrap .leftInfo .cover .context .top span {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #fff;
+    line-height: 1rem;
+}
+
+.brower-total .wrap-container .wrap .leftInfo .cover .context .bottom span.number {
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: #fff;
+    line-height: 1.6rem;
+    display: block;
+}
+
+.brower-total .wrap-container .wrap .leftInfo .cover .context .bottom span {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #fff;
+    line-height: 1rem;
+}
+
+.brower-total .wrap-container .wrap .leftInfo .bot_userqulity {
+    width: 91.7%;
+    height: 20.6%;
+    margin-left: 8.3%;
+    box-sizing: content-box;
+    margin-bottom: 16%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.brower-total .wrap-container .wrap .leftInfo .bot_userqulity .man_pic {
+    width: 100%;
+    height: 40.2%;
+}
+
+.brower-total .wrap-container .wrap .leftInfo .bot_userqulity .man_pic .data_astronaut {
+    width: 30.3%;
+    height: 100%;
+    margin: 0 auto;
+    background: url('../images/data_astronaut.png') no-repeat;
+    background-size: 100% 100%;
+   /* -webkit-animation: container 5s linear infinite;
+    animation: container 5s linear infinite;*/
+    -webkit-transform-origin: center bottom;
+    transform-origin: center bottom;
+}
+.brower-total .wrap-container .wrap .leftInfo .bot_userqulity .user_quantityContext {
+    width: 100%;
+    height: 47.1%;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    padding-top: 2%;
+    padding-left: 10.7%;
+    padding-bottom: 2%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.brower-total .wrap-container .wrap .leftInfo .bot_userqulity .user_quantityContext span#userNum {
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: #fff;
+    line-height: 2rem;
+}
+
+.brower-total .wrap-container .wrap .leftInfo .bot_userqulity .user_quantityContext span {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #fff;
+    line-height: 1.25rem;
+    display: block;
+}
+
+.brower-total .wrap-container .wrap .middleInfo {
+    width: 62.4%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.brower-total .wrap-container .wrap .middleInfo .tride-num {
+    margin-top: 10%;
+    font-size: 2.25rem;
+    color: #fff;
+    line-height: 2.25rem;
+    font-weight: 500;
+}
+
+.brower-total .wrap-container .wrap .middleInfo .data-chart {
+    width: 100%;
+    height: 37.9%;
+    position: relative;
+}
+.brower-total .wrap-container .wrap .middleInfo .data-chart .title{
+    width:45%;
+    height:14.3%;
+    font-size: 0.9rem;
+    font-weight: 500;
+    line-height: 0.9rem;
+    color: #fff;
+    padding-top:1%;
+    padding-left:2%;
+    background-color: rgba(0,0,0,0.2);
+    border-radius: 10px  10px 0 0;
+}
+.brower-total .wrap-container .wrap .middleInfo .data-chart .data-chartPic {
+    width: 100%;
+    height:86.7%;
+    border-left:2px solid #9af3fb;
+    border-bottom:2px solid #9af3fb;
+    border-radius: 10px;
+    border-top-left-radius: 0;
+    background-color: rgba(0,0,0,0.2);
+}
+.brower-total .wrap-container .wrap .middleInfo .data-chart .data-chartPic .main {
+    width: 96%;
+    height:100%;
+}
+
+.brower-total .wrap-container .wrap .middleInfo .data-chart .red_fly {
+    width: 14.1%;
+    height: 21.5%;
+    background: url('../images/data_red_fly.png')no-repeat;
+    background-size: 100% 100%;
+    position: absolute;
+    right: -4%;
+    top: 7%;
+    z-index: 100;
+}
+
+.brower-total .wrap-container .wrap .middleInfo .data-chart .white_fly {
+    width: 13.4%;
+    height: 20.1%;
+    background: url('../images/data_white_fly.png')no-repeat;
+    background-size: 100% 100%;
+    position: absolute;
+    right: -4%;
+    top: 27%;
+    z-index: 100;
+
+}
+.brower-total .wrap-container .wrap .middleInfo .data-chart .yellow_fly {
+    width: 13.18%;
+    height: 20.17%;
+    background: url('../images/yellow.png')no-repeat;
+    background-size: 100% 100%;
+    position: absolute;
+    right: -4%;
+    top: 47%;
+    z-index: 100;
+
+}
+
+
+.brower-total .wrap-container .wrap .middleInfo .data-chart .tips_2017 {
+    width: 15.5%;
+    height: 16.3%;
+    background: url('../images/tips_2017.png')no-repeat;
+    background-size: 100% 100%;
+    position: absolute;
+    right: -20%;
+    top: 0%;
+}
+.brower-total .wrap-container .wrap .middleInfo .data-chart .tips_2017 .nowMothDate{
+    position: absolute;
+    right: 8%;
+    top: -20%;
+    color: #fff;
+    font-size: 1.2rem;
+    line-height:1.2rem;
+    padding-top: 14%;
+}
+
+.brower-total .wrap-container .wrap .middleInfo .data-chart .tips_2016 {
+    width: 17.5%;
+    height: 20.6%;
+    background: url('../images/tips_2016.png')no-repeat;
+    background-size: 100% 100%;
+    position: absolute;
+    right: -20%;
+    top: 20%;
+}
+.brower-total .wrap-container .wrap .middleInfo .data-chart .tips_2016 .lastMothDate{
+    position: absolute;
+    right: 5%;
+    top: 2%;
+    color: #fff;
+    font-size: 1.2rem;
+    line-height:1.2rem;
+    padding-top:4%;
+
+}
+.brower-total .wrap-container .wrap .middleInfo .data-chart .tips_2016.lastLastMonth {
+    width: 17.5%;
+    height: 20.6%;
+    background: url('../images/tips_2016.png')no-repeat;
+    background-size: 100% 100%;
+    position: absolute;
+    right: -20%;
+    top: 40%;
+}
+.brower-total .wrap-container .wrap .middleInfo .data-chart .tips_2016 .lastLastMothDate{
+    position: absolute;
+    right: 5%;
+    top: 10%;
+    color: #fff;
+    font-size: 1.2rem;
+    line-height:1.2rem;
+    padding-top:4%;
+
+}
+
+.brower-total .wrap-container .wrap .rightInfo {
+    width: 15.1%;
+    height: 100%;
+}
+
+.brower-total .wrap-container .wrap .rightInfo .rightWrap {
+    width: 100%;
+    height: 20.6%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.brower-total .wrap-container .wrap .rightInfo .rightWrap .satelite_pic {
+    width: 40.9%;
+    height: 47.7%;
+    margin: 0 auto;
+    background: url('../images/data_satellite.png') no-repeat;
+    background-size: 100% 100%;
+    /*animation: salat 2s linear -2s infinite alternate none;
+    -webkit-animation: salat 2s linear -2s infinite alternate none;*/
+}
+
+@-webkit-keyframes salat {
+    0% {
+        -webkit-transform: translateX(-8.2%);
+        transform: translateX(-8.2%);
+    }
+    100% {
+        -webkit-transform: translateX(8.2%);
+        transform: translateX(8.2%);
+    }
+}
+
+@keyframes salat {
+    0% {
+        -webkit-transform: translateX(-8.2%);
+        transform: translateX(-8.2%);
+    }
+    100% {
+        -webkit-transform: translateX(8.2%);
+        transform: translateX(8.2%);
+    }
+}
+
+.brower-total .wrap-container .wrap .rightInfo .rightWrap .user_quantityContext {
+    width: 100%;
+    height: 42.6%;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 3% 0;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.brower-total .wrap-container .wrap .rightInfo .rightWrap .user_quantityContext span {
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1rem;
+    color: #fff;
+    display: block;
+}
+
+.brower-total .wrap-container .wrap .rightInfo .rightWrap .user_quantityContext span#book_view {
+    font-size: 1.3rem;
+    font-weight: 500;
+    line-height: 1.8rem;
+    color: #fff;
+}
+
+.showMove {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.showMove .earthRotate {
+    width: 74%;
+    height: 22.4%;
+    background: url('../images/index_earth.png') no-repeat;
+    background-size: 100% 100%;
+    position: absolute;
+    left: 50%;
+    bottom: -3.5%;
+    margin-left: -36%;
+    z-index: -111;
+    -webkit-transform-origin: center 1000px;
+    transform-origin: center 1000px;
+  /*  -webkit-animation: 10s linear infinite CDturn;
+    animation: 10s linear infinite CDturn;*/
+}
+
+@-webkit-keyframes CDturn {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg)
+    }
+    50% {
+        -webkit-transform: rotate(-4deg);
+        transform: rotate(-4deg)
+    }
+    100% {
+        -webkit-transform: rotate(2deg);
+        transform: rotate(2deg)
+    }
+}
+
+@keyframes CDturn {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg)
+    }
+    50% {
+        -webkit-transform: rotate(-4deg);
+        transform: rotate(-4deg)
+    }
+    100% {
+        -webkit-transform: rotate(2deg);
+        transform: rotate(2deg)
+    }
+}
+
+.showMove .star_middleRight {
+    width: 36%;
+    height: 72.5%;
+    background: url('../images/sun.png') no-repeat;
+    background-size: 100% 100%;
+    position: absolute;
+    top: 50%;
+    right: -30%;
+    margin-top: -15%;
+    z-index: -111;
+}
+
+
+.showMove .shootingStar {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -200;
+    overflow:hidden;
+}
