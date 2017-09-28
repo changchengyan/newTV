@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+﻿﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8" http-equiv="refresh" content="3000" />
@@ -44,7 +44,6 @@
             <div class="right-item">
                 <h4>最新关注</h4>
                 <div class="user-list">
-
                     <span class="user-item">
                         <img class="item-img" src="images/tx1.png" alt="user-img" onerror="imgChange($(this))"/>
                         <span class="user-name a-line">微信昵称</span>

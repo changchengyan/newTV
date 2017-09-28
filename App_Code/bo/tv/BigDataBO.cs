@@ -36,21 +36,10 @@ namespace Redsz.BO
         /// <returns></returns>
         public static string GetBaseData(HttpContext context)
         {
-            string sql = "select count(id) user_count"; //用户总量
-            sql += " ,( select sum(circulation) from platform_book)+(select top 1 base_value from  base_table where base_key='platformbook_count') book_count";//书籍总数
-            sql += " ,((select sum(a.total_money) from report_month_money a ,report_time b where a.report_time_id=b.id and datediff(month, CONVERT(datetime,b.[year] + '-'+ b.[month] +'-'+'1'), getdate())>0)+(select isnull(sum(money+freight),0) from reality_orderform_" + DateTime.Now.Year + "_" + DateTime.Now.Month + ")) total_money";//总成交额
-            sql += " from reality_weixin_user where is_active=1  ";
-            DataTable item = Data.getDataTable(sql);
             Hashtable ht = new Hashtable();
-            if (item.Rows.Count > 0)
-            {
-                Hashtable real_ht = Common.getRealData();
-                int user_count = Convert.ToInt32(item.Rows[0]["user_count"]) + Convert.ToInt32(real_ht["real_user_count"]);
-                ht["user_count"] = user_count;
-                ht["book_count"] = Convert.ToInt32(item.Rows[0]["book_count"]);
-                ht["total_money"] = (Convert.ToDouble(item.Rows[0]["total_money"]) + Convert.ToDouble(real_ht["real_total_money"])).ToString("F2");
-            }
-
+            ht["book_count"] = GetBookCount();//书籍数
+            ht["total_money"] = GetPlatformTotalMoney();//总金额
+            ht["user_count"] = GetTotalUserCount();//读者数
             return JsonConvert.SerializeObject(ht);
         }
 
@@ -58,18 +47,9 @@ namespace Redsz.BO
         public static string GetCurrData(HttpContext context)
         {
             Hashtable ht = new Hashtable();
-            string sql = "select count(id) user_count ";//读者数
-            //sql += " ,(select isnull(sum(click_count),0)  from  reality_orderform_browser) browser_count ";//总浏览量
-            sql += " from reality_weixin_user where is_active=1 ";
-            DataTable item = Data.getDataTable(sql);
-            if (item.Rows.Count > 0)
-            {
-                Hashtable real_ht = Common.getRealData();
-                //ht["browser_count"] = (Convert.ToInt32(item.Rows[0]["browser_count"]) + Convert.ToInt32(real_ht["real_browser_count"]));
-                int user_count = Convert.ToInt32(item.Rows[0]["user_count"]) + Convert.ToInt32(real_ht["real_user_count"]);
-                ht["online_user_count"] = GetOnLineUserCont(user_count);
-                //ht["today_user_count"] = GetTodayUserCont(user_count);
-            }
+            int user_count = GetTotalUserCount();
+            ht["online_user_count"] = GetOnLineUserCont(user_count);
+            //ht["today_user_count"] = GetTodayUserCont(user_count);
             return JsonConvert.SerializeObject(ht);
         }
         //获取交易金额
@@ -77,32 +57,17 @@ namespace Redsz.BO
         {
             Hashtable ht = new Hashtable();
             //把totalMoney写入cookie中
-            string totalMoney = "0";
+            string totalMoney = GetPlatformTotalMoney().ToString();
             if (context.Request.Cookies["totalMoney"] == null)
             {
-                string sql = "select (sum(a.total_money)+(select isnull(sum(money+freight),0) from reality_orderform_" + DateTime.Now.Year + "_" + DateTime.Now.Month + ")) total_money from report_month_money a ,report_time b where a.report_time_id=b.id and datediff(month, CONVERT(datetime,b.[year] + '-'+ b.[month] +'-'+'1'), getdate())>0";//总成交额
-                DataTable item = Data.getDataTable(sql);
-                if (item.Rows.Count > 0)
-                {
-                    Hashtable real_ht = Common.getRealData();
-                    totalMoney = (Convert.ToDouble(item.Rows[0]["total_money"]) + Convert.ToDouble(real_ht["real_total_money"])).ToString("F2");
-                    HttpCookie cookie = new HttpCookie("totalMoney");
-                    cookie.Value = totalMoney;
-                    cookie.Expires = DateTime.Now.AddMinutes(2);
-                }
+                HttpCookie cookie = new HttpCookie("totalMoney");
+                cookie.Value = totalMoney;
+                cookie.Expires = DateTime.Now.AddMinutes(2);
             }
             else
             {
                 totalMoney = context.Request.Cookies["totalMoney"].Value;
             }
-            //string sql = "select (sum(a.total_money)+(select isnull(sum(money+freight),0) from reality_orderform_" + DateTime.Now.Year + "_" + DateTime.Now.Month + ")) total_money from report_month_money a ,report_time b where a.report_time_id=b.id and datediff(month, CONVERT(datetime,b.[year] + '-'+ b.[month] +'-'+'1'), getdate())>0";//总成交额
-            //DataTable item = data.getDataTable(sql);
-            //if (item.Rows.Count > 0)
-            //{
-            //    Hashtable real_ht = Common.getRealData();
-            //    ht["total_money"] = (Convert.ToDouble(item.Rows[0]["total_money"]) + Convert.ToDouble(real_ht["real_total_money"])).ToString("F0");
-
-            //}
             ht["total_money"] = totalMoney;
             return JsonConvert.SerializeObject(ht);
         }
@@ -142,75 +107,156 @@ namespace Redsz.BO
             return onlineUserCount;
         }
 
+        //  //获取上个月，上上个月浏览趋势对比 
+        //  public static string GetTwoYearData(HttpContext context)
+        //  {
+        //      ReportTimeVO lastOneReportTimeVo = ReportTimeBO.getVOByTime(DateTime.Now.AddMonths(-1));
+        //      ReportTimeVO lastTwoReportTimeVo = ReportTimeBO.getVOByTime(DateTime.Now.AddMonths(-2));
+        //      ReportTimeVO lastThreeReportTimeVo = ReportTimeBO.getVOByTime(DateTime.Now.AddMonths(-3));
+        //      DateTime lastOneFirstDay = new DateTime(lastOneReportTimeVo.year, lastOneReportTimeVo.month, 1);
+        //      DateTime lastTwoFirstDay = new DateTime(lastTwoReportTimeVo.year, lastTwoReportTimeVo.month, 1);
+        //      DateTime lastThreeFirstDay = new DateTime(lastThreeReportTimeVo.year, lastThreeReportTimeVo.month, 1);
+        //      Hashtable ht = new Hashtable();
+        //      List<object> lastOneMonthList = new List<object>();
+        //      List<object> lastTwoMonthList = new List<object>();
+        //      List<object> lastThreeMonthList = new List<object>();
+        //      double[] oneProp =
+        //     {
+        //          0.823, 0.732, 0.772, 1.888, 1.230, 0.676, 0.625, 1.538, 0.647 ,0.577,
+        //          0.998, 0.805, 1.614, 1.578, 1.617, 0.922, 1.577, 1.099, 0.933 ,0.883,
+        //          1.157, 1.061, 1.602, 0.861, 0.759, 0.856, 1.851, 1.903, 1.351, 1.103, 1.003
+        //      };
+        //      double[] twoProp =
+        //    {
+        //          0.998, 1.305, 1.114, 0.278, 0.217, 0.822, 1.277, 0.199, 0.933 ,1.283,
+        //          0.323, 0.432, 0.372, 0.888, 1.230, 0.176, 1.025, 0.738, 1.347 ,0.777,
+        //          0.556, 0.951, 0.903, 1.051, 1.103, 1.203, 0.457, 0.361, 1.302, 1.361, 0.659
+        //      };
+        //      double[] threeProp =
+        //    {
+        //          0.061, 0.602, 1.361, 0.859, 0.756, 0.951, 0.903, 1.051, 1.103, 1.203,
+        //          0.823, 1.432, 1.272, 1.388, 1.030, 0.973, 0.323, 1.238, 0.837 ,1.077,
+        //          0.998, 0.605, 0.614, 1.178, 0.717, 0.822, 0.277, 1.399, 0.933 ,0.883,1.057
+
+        //      };
+        //      string sql = string.Format(@"select sum(click_count) num, datepart(dd, [datetime]) as day from reality_orderform_browser
+        // where report_time_id={0}
+        //group by datepart(dd, [datetime])", lastOneReportTimeVo.id);
+        //      DataTable dt = Data.getDataTable(sql);
+        //      for (int i = 0; i < dt.Rows.Count; i++)
+        //      {
+        //          lastOneMonthList.Add(new
+        //          {
+        //              month = lastOneFirstDay.AddDays(i).ToString("MM-dd"),
+        //              num = Convert.ToInt32(Convert.ToInt32(dt.Rows[i]["num"]) * oneProp[i])
+        //          });
+        //      }
+
+        //      //上上个月
+        //      string sql2 = string.Format(@"select sum(click_count) num, datepart(dd, [datetime]) as day from reality_orderform_browser
+        // where report_time_id={0}
+        //group by datepart(dd, [datetime])", lastTwoReportTimeVo.id);
+        //      DataTable dt2 = Data.getDataTable(sql2);
+        //      for (int j = 0; j < dt2.Rows.Count; j++)
+        //      {
+        //          lastTwoMonthList.Add(new
+        //          {
+        //              month = lastTwoFirstDay.AddDays(j).ToString("MM-dd"),
+        //              num = Convert.ToInt32(Convert.ToInt32(dt2.Rows[j]["num"]) * twoProp[j])
+        //          });
+        //      }
+        //      //上上上个月
+        //      string sql3 = string.Format(@"select sum(click_count) num, datepart(dd, [datetime]) as day from reality_orderform_browser
+        // where report_time_id={0}
+        //group by datepart(dd, [datetime])", lastTwoReportTimeVo.id);
+        //      DataTable dt3 = Data.getDataTable(sql3);
+        //      for (int k = 0; k < dt3.Rows.Count; k++)
+        //      {
+        //          lastThreeMonthList.Add(new
+        //          {
+        //              month = lastThreeFirstDay.AddDays(k).ToString("MM-dd"),
+        //              num = Convert.ToInt32(Convert.ToInt32(dt3.Rows[k]["num"]) * threeProp[k])
+        //          });
+        //      }
+        //      ht["lastOneMonthList"] = lastOneMonthList;
+        //      ht["lastTwoMonthList"] = lastTwoMonthList;
+        //      ht["lastThreeMonthList"] = lastThreeMonthList;
+        //      return JsonConvert.SerializeObject(ht);
+
+        //  }
+
         //获取上个月，上上个月浏览趋势对比 
         public static string GetTwoYearData(HttpContext context)
         {
-            ReportTimeVO lastOneReportTimeVo = ReportTimeBO.getVOByTime(DateTime.Now.AddMonths(-1));
-            ReportTimeVO lastTwoReportTimeVo = ReportTimeBO.getVOByTime(DateTime.Now.AddMonths(-2));
-            ReportTimeVO lastThreeReportTimeVo = ReportTimeBO.getVOByTime(DateTime.Now.AddMonths(-3));
-            DateTime lastOneFirstDay = new DateTime(lastOneReportTimeVo.year, lastOneReportTimeVo.month, 1);
-            DateTime lastTwoFirstDay = new DateTime(lastTwoReportTimeVo.year, lastTwoReportTimeVo.month, 1);
-            DateTime lastThreeFirstDay = new DateTime(lastThreeReportTimeVo.year, lastThreeReportTimeVo.month, 1);
+            Random rnd = new Random();
+            DateTime time = DateTime.Now;
+            DateTime lastOneFirstDay = new DateTime(time.AddMonths(-1).Year, time.AddMonths(-1).Month, 1);
+            DateTime lastOneLastDay = new DateTime(time.AddMonths(-1).Year, time.AddMonths(-1).Month, 1).AddMonths(1);
+            DateTime lastTwoFirstDay = new DateTime(time.AddMonths(-2).Year, time.AddMonths(-2).Month, 1);
+            DateTime lastTwoLastDay = new DateTime(time.AddMonths(-2).Year, time.AddMonths(-2).Month, 1).AddMonths(1);
+            DateTime lastThreeFirstDay = new DateTime(time.AddMonths(-3).Year, time.AddMonths(-3).Month, 1);
+            DateTime lastThreeLastDay = new DateTime(time.AddMonths(-3).Year, time.AddMonths(-3).Month, 1).AddMonths(1);
             Hashtable ht = new Hashtable();
             List<object> lastOneMonthList = new List<object>();
             List<object> lastTwoMonthList = new List<object>();
             List<object> lastThreeMonthList = new List<object>();
             double[] oneProp =
            {
-                0.823, 0.732, 0.772, 1.888, 1.230, 0.676, 0.625, 1.538, 0.647 ,0.577,
-                0.998, 0.805, 1.614, 1.578, 1.617, 0.922, 1.577, 1.099, 0.933 ,0.883,
-                1.157, 1.061, 1.602, 0.861, 0.759, 0.856, 1.851, 1.903, 1.351, 1.103, 1.003
-            };
+                      0.823, 0.732, 0.972, 1.588, 1.230, 0.676, 0.625, 1.538, 0.647 ,0.577,
+                      0.998, 0.805, 1.614, 1.078, 1.617, 0.922, 1.577, 1.099, 0.933 ,0.883,
+                      1.157, 1.061, 1.602, 0.861, 0.759, 0.856, 1.651, 1.803, 1.351, 1.103, 1.003
+                  };
             double[] twoProp =
           {
-                0.998, 1.305, 1.114, 0.278, 0.217, 0.822, 1.277, 0.199, 0.933 ,1.283,
-                0.323, 0.432, 0.372, 0.888, 1.230, 0.176, 1.025, 0.738, 1.347 ,0.777,
-                0.556, 0.951, 0.903, 1.051, 1.103, 1.203, 0.457, 0.361, 1.302, 1.361, 0.659
-            };
+                      0.998, 1.305, 1.114, 0.378, 0.417, 0.822, 1.277, 0.199, 0.933 ,1.283,
+                      0.323, 0.432, 0.372, 0.888, 1.230, 0.176, 1.025, 0.738, 1.347 ,0.777,
+                      0.556, 0.951, 0.903, 1.051, 1.103, 1.203, 0.457, 0.361, 1.302, 1.361, 0.659
+                  };
             double[] threeProp =
           {
-                0.061, 0.602, 1.361, 0.859, 0.756, 0.951, 0.903, 1.051, 1.103, 1.203,
-                0.823, 1.432, 1.272, 1.388, 1.030, 0.973, 0.323, 1.238, 0.837 ,1.077,
-                0.998, 0.605, 0.614, 1.178, 0.717, 0.822, 0.277, 1.399, 0.933 ,0.883,1.057
+                      0.061, 0.602, 1.361, 0.859, 0.756, 0.951, 0.903, 1.051, 1.103, 1.203,
+                      0.823, 1.432, 1.272, 1.388, 1.030, 0.973, 0.323, 1.238, 0.837 ,1.077,
+                      0.998, 0.605, 0.614, 1.178, 0.717, 0.822, 0.277, 1.399, 0.933 ,0.883,1.057
 
-            };
-            string sql = string.Format(@"select sum(click_count) num, datepart(dd, [datetime]) as day from reality_orderform_browser
-       where report_time_id={0}
-      group by datepart(dd, [datetime])", lastOneReportTimeVo.id);
+                  };
+            int basecount = 500000;
+            string sql = string.Format(@"select count(id) num, datepart(dd, [datetime]) as day from browser
+       where [datetime]>='{0}' and [datetime]<'{1}'
+      group by datepart(dd, [datetime])", lastOneFirstDay, lastOneLastDay);
             DataTable dt = Data.getDataTable(sql);
             for (int i = 0; i < dt.Rows.Count; i++)
             {
                 lastOneMonthList.Add(new
                 {
                     month = lastOneFirstDay.AddDays(i).ToString("MM-dd"),
-                    num = Convert.ToInt32(Convert.ToInt32(dt.Rows[i]["num"]) * oneProp[i])
+                    num = Convert.ToInt32((basecount+Convert.ToInt32(dt.Rows[i]["num"])) * oneProp[i])
                 });
             }
 
             //上上个月
-            string sql2 = string.Format(@"select sum(click_count) num, datepart(dd, [datetime]) as day from reality_orderform_browser
-       where report_time_id={0}
-      group by datepart(dd, [datetime])", lastTwoReportTimeVo.id);
+            string sql2 = string.Format(@"select count(id) num, datepart(dd, [datetime]) as day from browser
+       where [datetime]>='{0}' and [datetime]<'{1}'
+      group by datepart(dd, [datetime])", lastTwoFirstDay, lastTwoLastDay);
             DataTable dt2 = Data.getDataTable(sql2);
             for (int j = 0; j < dt2.Rows.Count; j++)
             {
                 lastTwoMonthList.Add(new
                 {
                     month = lastTwoFirstDay.AddDays(j).ToString("MM-dd"),
-                    num = Convert.ToInt32(Convert.ToInt32(dt.Rows[j]["num"]) * twoProp[j])
+                    num = Convert.ToInt32((basecount + Convert.ToInt32(dt2.Rows[j]["num"])) * twoProp[j])
                 });
             }
             //上上上个月
-            string sql3 = string.Format(@"select sum(click_count) num, datepart(dd, [datetime]) as day from reality_orderform_browser
-       where report_time_id={0}
-      group by datepart(dd, [datetime])", lastTwoReportTimeVo.id);
+            string sql3 = string.Format(@"select count(id) num, datepart(dd, [datetime]) as day from browser
+       where [datetime]>='{0}' and [datetime]<'{1}'
+      group by datepart(dd, [datetime])", lastThreeFirstDay, lastThreeLastDay);
             DataTable dt3 = Data.getDataTable(sql3);
             for (int k = 0; k < dt3.Rows.Count; k++)
             {
                 lastThreeMonthList.Add(new
                 {
                     month = lastThreeFirstDay.AddDays(k).ToString("MM-dd"),
-                    num = Convert.ToInt32(Convert.ToInt32(dt.Rows[k]["num"]) * threeProp[k])
+                    num = Convert.ToInt32((basecount + Convert.ToInt32(dt3.Rows[k]["num"])) * threeProp[k])
                 });
             }
             ht["lastOneMonthList"] = lastOneMonthList;
@@ -227,12 +273,13 @@ namespace Redsz.BO
         public static string GetBaseReport(HttpContext context)
         {
             Hashtable ht = new Hashtable();
+            double total_money = GetPlatformTotalMoney();
             string sql =
                 "select count(id)+(select top 1 base_value from  base_table where base_key='channel_count')  channal_count";
             //运营终端数
-            sql +=
-                " ,((select sum(total_money) from report_time b where datediff(month, CONVERT(datetime,b.[year] + '-'+ b.[month] +'-'+'1'), getdate())>0)+(select isnull(sum(money+freight),0) from reality_orderform_" +
-                DateTime.Now.Year + "_" + DateTime.Now.Month + ")) total_money"; //总成交额
+            //sql +=
+            //    " ,((select sum(total_money) from report_time b where datediff(month, CONVERT(datetime,b.[year] + '-'+ b.[month] +'-'+'1'), getdate())>0)+(select isnull(sum(money+freight),0) from reality_orderform_" +
+            //    DateTime.Now.Year + "_" + DateTime.Now.Month + ")) total_money"; //总成交额
             sql +=
                 " ,(select count(id) from space)+(select top 1 base_value from  base_table where base_key='space_count')+(select count(id) from channel)+(select top 1 base_value from  base_table where base_key='channel_count')+(select count(id) from adviser)+(select top 1 base_value from  base_table where base_key='adviser_count')+(select count(id) from merchant)+(select top 1 base_value from  base_table where base_key='merchant_count') cooperate_count ";
             //出版人
@@ -241,7 +288,7 @@ namespace Redsz.BO
             if (item.Rows.Count > 0)
             {
                 ht["merchant_money"] = Convert.ToInt32(item.Rows[0]["channal_count"]);
-                ht["channel_money"] = Convert.ToDouble(Convert.ToDouble(item.Rows[0]["total_money"]) * 0.6).ToString("F2");
+                ht["channel_money"] = Convert.ToDouble(total_money * 0.6).ToString("F2");
                 ht["cooperate_count"] = Convert.ToInt32(item.Rows[0]["cooperate_count"]);
             }
 
@@ -319,9 +366,9 @@ namespace Redsz.BO
             sql +=
                 " ,(select top 1 base_value from  base_table where base_key='merchant_money_porportion')merchant_percent ";
             //商户收益比例
-            sql +=
-                " ,((select sum(total_money) from report_time b where datediff(month, CONVERT(datetime,b.[year] + '-'+ b.[month] +'-'+'1'), getdate())>0)+(select isnull(sum(money+freight),0) from reality_orderform_" +
-                DateTime.Now.Year + "_" + DateTime.Now.Month + ")) total_money"; //总成交额
+            //sql +=
+            //    " ,((select sum(total_money) from report_time b where datediff(month, CONVERT(datetime,b.[year] + '-'+ b.[month] +'-'+'1'), getdate())>0)+(select isnull(sum(money+freight),0) from reality_orderform_" +
+            //    DateTime.Now.Year + "_" + DateTime.Now.Month + ")) total_money"; //总成交额
             sql +=
     " ,(select count(id) from space)+(select top 1 base_value from  base_table where base_key='space_count')+(select count(id) from channel)+(select top 1 base_value from  base_table where base_key='channel_count')+(select count(id) from adviser)+(select top 1 base_value from  base_table where base_key='adviser_count')+(select count(id) from merchant)+(select top 1 base_value from  base_table where base_key='merchant_count') cooperate_count ";
             //出版人
@@ -330,7 +377,7 @@ namespace Redsz.BO
             Hashtable ht = new Hashtable();
             if (item.Rows.Count > 0)
             {
-                double total_money = Convert.ToDouble(item.Rows[0]["total_money"]) * 0.6;
+                double total_money = GetPlatformTotalMoney() * 0.6;
                 object obj = new
                 {
                     channelPercent = Convert.ToDouble(item.Rows[0]["channel_percent"]).ToString("0%"),
@@ -365,15 +412,11 @@ namespace Redsz.BO
                 int year = DateTime.Now.Year;
                 int month = DateTime.Now.Month;
                 string sql = string.Format(@"select top {0} x.total_money,y.channel_name from(
-select channel_id,sum(total_money) as total_money from(
 select channel_id,sum(money_total) total_money,0 as iscurr from report_money_channel a,report_time b
 where a.report_time_id=b.id
 and datediff(month, CONVERT(datetime, cast(b.[year] as varchar(10)) + '-'+ cast(b.[month] as varchar(10)) +'-'+'1'), getdate())>0
-group by channel_id
-union 
-select channel_id,sum(total_price) total_money,1 as iscurr from reality_orderform_item_{1}_{2}
-group by channel_id) c group by channel_id) x,report_alias_channel y
- where x.channel_id=y.channel_id and y.report_super_id=1 order by x.total_money desc", num, year, month);
+group by channel_id) x,report_alias_channel y
+ where x.channel_id=y.channel_id and y.report_super_id=1 order by x.total_money desc", num);
                 DataTable dt = Data.getDataTable(sql);
                 string[] channel_name_array = { "外语教学与研究出版社", "长江少年儿童出版社", "武汉大学出版社", "中国地图出版社", "西南交通大学出版社" };
                 List<AnonClassVO> array = new List<AnonClassVO>();
@@ -427,23 +470,19 @@ group by channel_id) c group by channel_id) x,report_alias_channel y
         /// <returns></returns>
         public static string GetUserBaseReport(HttpContext context)
         {
-            string sql = "select count(id) user_count"; //  用户数
-            sql += " ,(select count(id) from reality_weixin_user where subscribe = 1 and  is_active=1) active_user";
-            //活跃用户数
-            sql += " from reality_weixin_user where is_active=1";
-            DataTable item = Data.getDataTable(sql);
+            //string sql = "select count(id) user_count"; //  用户数
+            //sql += " ,(select count(id) from reality_weixin_user where subscribe = 1 and  is_active=1) active_user";
+            ////活跃用户数
+            //sql += " from reality_weixin_user where is_active=1";
+            //DataTable item = Data.getDataTable(sql);
             Hashtable ht = new Hashtable();
-            if (item.Rows.Count > 0)
-            {
-                Hashtable real_ht = Common.getRealData();
-                int real_user_count = Convert.ToInt32(real_ht["real_user_count"]);
-                ht["user_count"] = (Convert.ToInt32(item.Rows[0]["user_count"]) + real_user_count);
-                int active_user = Convert.ToInt32(item.Rows[0]["active_user"]) + real_user_count;
-                ht["active_user"] = Convert.ToInt32(active_user * BaseTableBO.getBaseByKey("active_user_proportion"));
-                ht["pay_user_percent"] = Convert.ToDouble(active_user * BaseTableBO.getBaseByKey("pay_user_proportion") /
-                                                          (Convert.ToInt32(item.Rows[0]["user_count"]) + real_user_count))
-                    .ToString("0.00%");
-            }
+            int user_count = GetTotalUserCount();
+            int active_user = GetActiveUserCount();
+            ht["user_count"] = user_count;
+            ht["active_user"] = Convert.ToInt32(active_user * BaseTableBO.getBaseByKey("active_user_proportion"));
+            ht["pay_user_percent"] = Convert.ToDouble(active_user * BaseTableBO.getBaseByKey("pay_user_proportion") / user_count)
+                .ToString("0.00%");
+
             return JsonConvert.SerializeObject(ht);
         }
 
@@ -524,11 +563,8 @@ group by channel_id) c group by channel_id) x,report_alias_channel y
             string num = context.Request["num"].ToString();
             ReturnDataVO returnData = new ReturnDataVO();
             string sql = string.Format(@"select top {0} xx.*,b.book_name,b.book_pic,b.isbn  from (
-select book_id, sum(money) as total_money from(
-select book_id, sum(money_total) money from report_money_book where book_id > 56 group by book_id
-union
-select book_id, sum(total_price) money from reality_orderform_item_{1}_{2} where book_id > 56 group by book_id)x
-group by book_id)xx,platform_book b where xx.book_id=b.id order by total_money desc", num, DateTime.Now.Year, DateTime.Now.Month);
+select book_id, sum(money_total) total_money from report_money_book where book_id > 56 group by book_id)xx
+,platform_book b where xx.book_id=b.id order by total_money desc", num);
             DataTable dt = Data.getDataTable(sql);
             List<object> list = new List<object>();
             for (int i = 0; i < dt.Rows.Count; i++)
@@ -596,11 +632,11 @@ where a.book_id={0} and a.reality_ticket_id=b.id) as ticket
             PlatformBookVO platformBookVo = PlatformBookBO.getVOByIsbn(isbn);
             ReturnDataVO returnData = new ReturnDataVO();
             string sql = string.Format(@"
-select sum(money_total)+(select sum(total_price)  from reality_orderform_item_{1}_{2} where book_id={0})  as total_money,
+select sum(money_total)  as total_money,
 (select sum(click_count) from reality_orderform_browser where book_id={0}) as browser_count,
 (select count(id) from reality_orderform_browser where book_id={0}) as user_count
 from report_money_book where book_id={0}
-", platformBookVo.id, DateTime.Now.Year, DateTime.Now.Month);
+", platformBookVo.id);
             DataTable dt = Data.getDataTable(sql);
             if (dt.Rows.Count > 0)
             {
@@ -737,19 +773,16 @@ where c.isbn='{0}'and a.book_id=c.id and a.reality_ticket_id=b.id", isbn));
             ReturnDataVO returnData = new ReturnDataVO();
             try
             {
-
-                string sql = "select count(id) user_count"; //用户总量
-                sql += " ,( select sum(circulation) from platform_book)+(select top 1 base_value from  base_table where base_key='platformbook_count') book_count";//书籍总数
-                sql += " ,(select count(id)from reality_seed)+(select top 1 base_value from  base_table where base_key='reality_seed_count') seed_count"; //实时上架资源
-                sql += " from reality_weixin_user where is_active=1  ";
+                //实时上架资源
+                string sql = "select count(id)+(select top 1 base_value from  base_table where base_key='reality_seed_count') seed_count"; //用户总量
+                sql += " from seed  ";
                 DataTable item = Data.getDataTable(sql);
                 Hashtable ht = new Hashtable();
                 if (item.Rows.Count > 0)
                 {
-                    Hashtable real_ht = Common.getRealData();
-                    int user_count = Convert.ToInt32(item.Rows[0]["user_count"]) + Convert.ToInt32(real_ht["real_user_count"]);
+                    int user_count = GetTotalUserCount();
                     ht["user_count"] = user_count.ToString("N0");
-                    ht["book_count"] = Convert.ToInt32(item.Rows[0]["book_count"]).ToString("N0");
+                    ht["book_count"] = GetBookCount().ToString("N0");
                     ht["seed_count"] = Convert.ToInt32(item.Rows[0]["seed_count"]).ToString("N0");
                 }
                 returnData.success = true;
@@ -772,30 +805,22 @@ where c.isbn='{0}'and a.book_id=c.id and a.reality_ticket_id=b.id", isbn));
             ReturnDataVO returnData = new ReturnDataVO();
             try
             {
-                int year = DateTime.Now.Year;
-                int month = DateTime.Now.Month;
-                string sql = string.Format(@"select isnull(sum(orderform_money),0) orderform_money,
-            isnull(sum(orderform_count),0) orderform_count,
-            isnull(sum(promotion_money),0) promotion_money,
-            isnull(sum(orderform_money-promotion_money),0)natural_money from 
-             (select sum(money+freight) orderform_money,count(id) orderform_count,
-             (select isnull(sum(total_price),0)  from reality_orderform_item_{0}_{1} where adviser_id>0) promotion_money,
-              '0' as is_real_time  from reality_orderform_{0}_{1}
-              union all
-            select sum(a.total_money) orderform_money,sum(orderform_count) orderform_count,sum(promotion_money) promotion_money,
-           '1' as is_real_time  from report_month_money a ,report_time b 
-            where a.report_time_id=b.id and  datediff(month, CONVERT(datetime,cast(b.[year] as varchar(10)) + '-'+ cast(b.[month] as varchar(10)) +'-'+'1'), getdate())>0) x
-            ", year, month);
-                DataTable item = Data.getDataTable(sql);
+                //int year = DateTime.Now.Year;
+                //int month = DateTime.Now.Month;
+                //     string sql = string.Format(@"select isnull(sum(orderform_money),0) orderform_money,
+                // isnull(sum(orderform_count),0) orderform_count from 
+                //  (select sum(money+freight) orderform_money,count(id) orderform_count,
+                //   '0' as is_real_time  from reality_orderform_{0}_{1}
+                //   union all
+                // select sum(a.total_money) orderform_money,sum(orderform_count) orderform_count,
+                //'1' as is_real_time  from report_month_money a ,report_time b 
+                // where a.report_time_id=b.id and  datediff(month, CONVERT(datetime,cast(b.[year] as varchar(10)) + '-'+ cast(b.[month] as varchar(10)) +'-'+'1'), getdate())>0) x
+                // ", year, month);
+                //     DataTable item = Data.getDataTable(sql);
                 Hashtable ht = new Hashtable();
-                if (item.Rows.Count > 0)
-                {
-                    Hashtable real_ht = Common.getRealData();
-                    double real_total_money = Convert.ToDouble(real_ht["real_total_money"]);
-                    int real_orderform_count = Convert.ToInt32(real_ht["real_orderform_count"]);
-                    ht["total_money"] = (Convert.ToDouble(item.Rows[0]["orderform_money"]) + real_total_money).ToString("N");
-                    ht["orderform_count"] = (Convert.ToInt32(item.Rows[0]["orderform_count"]) + real_orderform_count).ToString("N0");
-                }
+                ht["total_money"] = GetPlatformTotalMoney().ToString("N");
+                ht["orderform_count"] = GetTotalOrderCount().ToString("N0");
+
                 returnData.success = true;
                 returnData.data = ht;
             }
@@ -806,6 +831,58 @@ where c.isbn='{0}'and a.book_id=c.id and a.reality_ticket_id=b.id", isbn));
             }
             return JsonConvert.SerializeObject(returnData);
         }
+        #endregion
+
+        #region 获取平台总额
+
+        #region 获取交易总额
+        public static double GetPlatformTotalMoney()
+        {
+            double base_money = BaseTableBO.getBaseByKey("platform_total_money");
+            Hashtable real_ht = Common.getRealData();
+            string total_money = (Convert.ToDouble(base_money) + Convert.ToDouble(real_ht["real_total_money"])).ToString("F2");
+            return Convert.ToDouble(total_money);
+        }
+        #endregion
+        #region 获取订单总数
+        public static int GetTotalOrderCount()
+        {
+            double base_count = BaseTableBO.getBaseByKey("platform_total_order");
+            Hashtable real_ht = Common.getRealData();
+            int total_count = Convert.ToInt32(base_count) + Convert.ToInt32(real_ht["real_orderform_count"]);
+            return total_count;
+        }
+        #endregion
+        #region 获取用户总数
+        public static int GetTotalUserCount()
+        {
+            int base_count = Convert.ToInt32(BaseTableBO.getBaseByKey("platform_total_usercount"));
+            Hashtable real_ht = Common.getRealData();
+            int count = Convert.ToInt32(real_ht["real_user_count"]);
+            int total_count = base_count + count;
+            return total_count;
+        }
+        #endregion
+        #region 获取活跃用户总数
+        public static int GetActiveUserCount()
+        {
+            int base_count = Convert.ToInt32(BaseTableBO.getBaseByKey("platform_active_usercount"));
+            Hashtable real_ht = Common.getRealData();
+            int count = Convert.ToInt32(real_ht["real_user_count"]);
+            int total_count = base_count + count;
+            return total_count;
+        }
+        #endregion
+        #region 获取书籍总额
+        public static int GetBookCount()
+        {
+            int base_count = Convert.ToInt32(BaseTableBO.getBaseByKey("platformbook_count"));
+            string sql = "select sum(circulation) from platform_book where is_tv_book=1";
+            int count = Data.GetRsCount(sql);
+            int total_count = base_count + count;
+            return total_count;
+        }
+        #endregion
         #endregion
 
     }

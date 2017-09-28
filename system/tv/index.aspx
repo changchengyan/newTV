@@ -114,7 +114,7 @@
             </div>
         </div>
     </div>
-    <%--<img src="images/index.png" style="width: 100%"/>--%>
+    <!--<%--<img src="images/index.png" style="width: 100%"/>--%>-->
         <script src="js/jquery.min.js"></script>
         <script src="js/numScrollTop.js"></script>
         <script src="js/echarts.min.js"></script>

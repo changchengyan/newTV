@@ -10,7 +10,7 @@ var fisrtFiveshow ={
     scanArray : new Array(),
     payArray : new Array(),
     getFirstRealBehavior:function() {
-         $.get("http://api.chubanyun.net/exapi/v1.0/tv/getGeneralData?count=5", {}, function (json,status) {
+         $.get("http://api.chubanyun.net/exapi/v1.0/tv/getGeneralData?count=10", {}, function (json,status) {
                         if(status != "success") {
                             alert(status)
                          }
@@ -34,8 +34,7 @@ var fisrtFiveshow ={
                                 }
                                 	fullYear=dataTime.slice(0,10);
                                     fullTime=dataTime.slice(11,20);
-                                    console.log(fullYear);
-                                    console.log(fullTime);
+
                                 var newItem = $(".item-behavior").eq(0).clone();
                                 newItem.find(".user-time").html("<span class='fullYear'>"+fullYear+"</span><br><span class='fullTime'>"+fullTime+"</span>").end()
                                        .find(".user-img img").attr("src", imgsrc).end()
@@ -164,11 +163,15 @@ var fisrtFiveshow ={
         changeInfo = {
           "start":0,
           newBuy: function () { //更新实时行为
-              $.get("http://api.chubanyun.me/exapi/v1.0/tv/getGeneralData?count=5", {},
+              $.get("http://api.chubanyun.net/exapi/v1.0/tv/getGeneralData?count=10", {},
                   function (json,status) {
                    if(status != "success") {
                       alert(status)
                   }
+                  var lastNewInfo =$(".behavior-list .item-behavior").eq(0).text().trim();
+                      //console.log(lastNewInfo);
+                      //console.log(json.data[0].behaviorTime.trim())
+
                       if (json.errCode == 0 &&  json.data.length>0) {
                           var newArray = json.data;
                           var data = getNewItems(fisrtFiveshow.behaviorArray, newArray, "behaviorTime");
@@ -194,12 +197,15 @@ var fisrtFiveshow ={
                                        .find(".desc-word p").html(data[i].nickname + data[i].behavior + data[i].behaviorRelationName).end()
                                        .find(".behavior-title").html(data[i].spaceName);
                                 $(".behavior-list .list-box").append(newItem);
+
+                                $(".behavior-list .list-box .item-behavior").eq(0).remove();
+
                                 var newY;
                                 changeInfo.start = changeInfo.start + newItem.outerHeight();
                                 newY = -changeInfo.start;
-                                $(".behavior-list .list-box").css({ "margin-top": newY + "px" })
+                                //$(".behavior-list .list-box").css({ "margin-top": newY + "px" })
                             }
-
+                          //$(".behavior-list  .list-box").append($(".item-behavior").eq(0))
                           fisrtFiveshow.behaviorArray = newArray;
 
                         }
@@ -235,9 +241,9 @@ var fisrtFiveshow ={
         }
 
         setInterval("changeInfo.newBuy()", 5000)
-        setInterval("fisrtFiveshow.getPayUserItem('http://api.chubanyun.me/exapi/v1.0/tv/getNewOrder?count=5','payTime')", 5000);
-        setInterval("fisrtFiveshow.getScanUserItem('http://api.chubanyun.me/exapi/v1.0/tv/getNewScan?count=5','scanTime')", 5000);
-        setInterval("fisrtFiveshow.getSubscribeUserItem('http://api.chubanyun.me/exapi/v1.0/tv/getNewUser?count=5','subscribeTime')", 5000)
+        setInterval("fisrtFiveshow.getPayUserItem('http://api.chubanyun.net/exapi/v1.0/tv/getNewOrder?count=5','payTime')", 5000);
+        setInterval("fisrtFiveshow.getScanUserItem('http://api.chubanyun.net/exapi/v1.0/tv/getNewScan?count=5','scanTime')", 5000);
+        setInterval("fisrtFiveshow.getSubscribeUserItem('http://api.chubanyun.net/exapi/v1.0/tv/getNewUser?count=5','subscribeTime')", 5000)
     function imgChange(whichImg) {
       whichImg.attr("src", "images/tx1.png")
      }
@@ -295,20 +301,26 @@ window.onload=function(){
     //首次获取五条实时行为
     fisrtFiveshow.getFirstRealBehavior();
     //首次获取五条关注用户
-    fisrtFiveshow.getFirstSubscribeUser("http://api.chubanyun.me/exapi/v1.0/tv/getNewUser?count=5");
+    fisrtFiveshow.getFirstSubscribeUser("http://api.chubanyun.net/exapi/v1.0/tv/getNewUser?count=5");
     //首次获取五条扫码用户
-    fisrtFiveshow.getFirstScanUserItem("http://api.chubanyun.me/exapi/v1.0/tv/getNewScan?count=5");
+    fisrtFiveshow.getFirstScanUserItem("http://api.chubanyun.net/exapi/v1.0/tv/getNewScan?count=5");
     //首次获取五条支付用户
-    fisrtFiveshow.getFirstPayUserItem("http://api.chubanyun.me/exapi/v1.0/tv/getNewOrder?count=5");
+    fisrtFiveshow.getFirstPayUserItem("http://api.chubanyun.net/exapi/v1.0/tv/getNewOrder?count=5");
     window.addEventListener("resize",function(){
     	sizeChange();
     });
 }
+$(".list-box").scroll(function(){console.log("1")})
+$(".list-box").animate(
+    function(){
+        $(this).css({"marginTop":"-50%"})
+    },20000
+)
+//function myFresh(){
+//    window.location.reload();
+//}
 
-function myFresh(){
-    window.location.reload();
-}
-
+/*
 setInterval(function(){
     myFresh();
-},60*60*1000);
+},60*60*1000);*/

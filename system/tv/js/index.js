@@ -1,4 +1,4 @@
-﻿		setInterval('ReloadPage()', 30 * 60 * 1000);
+﻿﻿		setInterval('ReloadPage()', 30 * 60 * 1000);
 
 		function ReloadPage() {
 		    if (getCookie("isExsist") != "1") {

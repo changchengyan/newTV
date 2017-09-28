@@ -63,14 +63,21 @@ html {
         }
         .behavior-list {
             margin: 0 2rem;
-
             overflow: hidden;
+
         }
         .list-box {
             width: 100%;
-            transform: translate3d(0,0,0);
-            transition: all 1s;
+            /*animation: moving 20s linear infinite;*/
+            /*transform: translateY(0%);*/
         }
+        @keyframes moving {
+
+            0% {transform:translateY(0%);}
+
+            100% {transform:translateY(-50%);}
+
+}
         .user-list .list-box {
             display: table;
             height: 100%;
@@ -90,6 +97,7 @@ html {
             font-size: 0;
             height: 15%;
               padding-bottom: 5%;
+
 
         }
         .user-img {

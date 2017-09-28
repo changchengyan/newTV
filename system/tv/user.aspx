@@ -34,7 +34,7 @@
 				<!--背景极光左上角-->
 				<div class="user_lt"></div>
 				<!--背景极光右下角-->
-				<div class="user_rb"></div>
+				<!--<div class="user_rb"></div>-->
 				<!--背景极光右上角-->
 				<div class="user_rt"></div>
 				<!--RAYS读者-->
